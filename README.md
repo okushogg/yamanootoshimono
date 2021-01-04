@@ -1,24 +1,35 @@
-# README
+# <山の落とし物>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+<山での落とし物の情報を共有する掲示板>
 
-Things you may want to cover:
+### サイトテーマ
+<登山の最中に落としてしまった物を探し易くする。>
 
-* Ruby version
+### テーマを選んだ理由
+<山の中で見つけた落とし物、そのままにしておくわけにもいかず持ち帰ることが多いと思います。
+片方だけの手袋、水筒、携帯電話、鍵など自分にとっては不要な物でも、落とし主には思い入れのある物だったりします。
+拾って、それが持ち主に届けば山はきれいに、拾い主は人助けに、落とし主は幸せになりみんな幸せです。>
 
-* System dependencies
+### ターゲットユーザ
+<全国の登山愛好者>
 
-* Configuration
+### 主な利用シーン
+<登山で落とし物を発見したとき、落とし物を探すとき>
 
-* Database creation
+## 設計書
+<...>
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
