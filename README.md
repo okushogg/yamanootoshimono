@@ -5,6 +5,14 @@
 基本登録不要で利用できるが、以下はユーザー登録が必要。
 「落とし物を探す」設定をする際、コメントを通知する際。
 
+拾得物、遺失物に関する法律に準拠して運用する。（参考：警察庁HP）
+https://www.npa.go.jp/bureau/soumu/ishitsubutsu/otoshimono/chart/choice_pick1.html
+
+Strage_placeで「自宅保管」を選択する場合はUser登録を必要とし、コメントがあれば随時メールで通知を行う。
+Gestとして投稿する場合Strage_pleaceは「届け先」（ex.hogehoge山小屋、hogeの交番）を必須とする。
+（参考：ヤマレコ質問箱 カテゴリ:落とし物)
+https://www.yamareco.com/modules/plzXoo/index.php?cid=8
+
 ### サイトテーマ
 登山の最中に落としてしまった物を探し易くする。
 
@@ -24,10 +32,9 @@
 登山で落とし物を発見したとき、落とし物を探すとき
 
 ## 設計書
-
-
-## チャレンジ要素一覧
+機能一覧
 https://docs.google.com/spreadsheets/d/1x7mOYDq51umP8X8LU4bwnioBcwenisaKR67m4AEsiek/edit?usp=sharing
+
 ## 開発環境
 - OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
