@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'posts/index'
+    get 'posts/show'
+    get 'posts/edit'
+  end
   devise_for :admins
   devise_for :users
   
