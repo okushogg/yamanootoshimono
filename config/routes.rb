@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'prefectures/index'
-    get 'prefectures/show'
-    get 'prefectures/edit'
-  end
   devise_for :admins
   devise_for :users
-  resources :item_genres, only:[:create,:index, :show, :edit, :update]
+  
+  get 'admin' => 'admins/homes#top'
+  namespace :admin do
+    resources :item_genres
+    resources :prefectures
+    resources :users
+  end
+  
+  
+  
   
   get 'homes/top'
   get 'homes/about'
