@@ -1,27 +1,21 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'posts/index'
-    get 'posts/show'
-    get 'posts/edit'
-  end
-  devise_for :admins
-  devise_for :users
+  
+  devise_for :admin
+  devise_for :user
   
   get 'admin' => 'admins/homes#top'
+  
   namespace :admin do
     resources :item_genres
     resources :prefectures
     resources :users
+    resources :posts
   end
   
+  namespace :public do
+    get 'home/top'
+    get 'home/about'
+  end
   
-  
-  
-  get 'homes/top'
-  get 'homes/about'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/unsubscribe'
- 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
