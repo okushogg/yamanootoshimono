@@ -1,5 +1,37 @@
 Rails.application.routes.draw do
   
+  namespace :public do
+    get 'mountain_names/index'
+    get 'mountain_names/edit'
+  end
+  namespace :public do
+    get 'comments/new'
+    get 'comments/show'
+    get 'comments/edit'
+  end
+  namespace :public do
+    get 'prefecture/index'
+    get 'prefecture/show'
+  end
+  namespace :public do
+    get 'item_genres/index'
+    get 'item_genres/show'
+  end
+  namespace :public do
+    get 'posts/index'
+    get 'posts/show'
+    get 'posts/new'
+    get 'posts/edit'
+  end
+  namespace :public do
+    get 'users/show'
+    get 'users/edit'
+    get 'users/unsubscribe'
+  end
+  namespace :admin do
+    get 'mountain_names/index'
+    get 'mountain_names/edit'
+  end
   devise_for :admin
   devise_for :user
   
