@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'homes/top'
+  get 'homes/about'
   get 'users/show'
   get 'users/edit'
   get 'users/unsubscribe'
