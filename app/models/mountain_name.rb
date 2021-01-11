@@ -1,0 +1,2 @@
+class MountainName < ApplicationRecord
+end
