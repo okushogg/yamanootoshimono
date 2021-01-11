@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_025338) do
+ActiveRecord::Schema.define(version: 2021_01_11_033338) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,6 +24,11 @@ ActiveRecord::Schema.define(version: 2021_01_11_025338) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "item_genres", force: :cascade do |t|
     t.string "item_genre_name"
     t.boolean "is_active", default: true, null: false
@@ -34,6 +39,21 @@ ActiveRecord::Schema.define(version: 2021_01_11_025338) do
   create_table "mountain_names", force: :cascade do |t|
     t.string "mountain_name"
     t.string "mountain_name_kana"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "prefecture.id"
+    t.integer "item_genre_id"
+    t.integer "user_id"
+    t.integer "mountain_name_id"
+    t.integer "item_image_id"
+    t.date "found_day"
+    t.string "post_montain_name"
+    t.text "detail"
+    t.string "strage_place"
+    t.boolean "is_solved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
