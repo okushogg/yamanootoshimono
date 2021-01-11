@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_11_033338) do
+ActiveRecord::Schema.define(version: 2021_01_11_060006) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2021_01_11_033338) do
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "post_id"
   end
 
   create_table "item_genres", force: :cascade do |t|
@@ -41,6 +42,9 @@ ActiveRecord::Schema.define(version: 2021_01_11_033338) do
     t.string "mountain_name_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_id"
+    t.index ["mountain_name"], name: "index_mountain_names_on_mountain_name"
+    t.index ["mountain_name_kana"], name: "index_mountain_names_on_mountain_name_kana"
   end
 
   create_table "posts", force: :cascade do |t|
