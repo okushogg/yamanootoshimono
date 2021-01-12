@@ -18,7 +18,24 @@ class Admin::ItemGenresController < ApplicationController
   end
 
   def edit
+    @item_genre = ItemGenre.find(params[:id])
   end
+
+  def update
+    @item_genre = ItemGenre.find(params[:id])
+    if @item_genre.update(item_genre_params)
+    redirect_to admin_item_genres_path,flash:{notice:'アイテムジャンルを編集しました。'}
+    else
+      render "admin/edit"
+    end
+  end
+
+  def destroy
+    @item_genre = ItemGenre.find(item_genre_params[:id])
+    @item_genre.destroy
+    redirect_to admin_item_genres_path
+  end
+
   
   private
   def item_genre_params

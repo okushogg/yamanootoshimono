@@ -1,2 +1,10 @@
-<h1>ItemGenres#edit</h1>
-<p>Find me in app/views/item_genres/edit.html.erb</p>
+<h3>アイテムジャンル新規登録</h3>
+
+<%= form_with model: @item_genre, url: admin_item_genre_path(@item_genre.id),local:true do |f| %>
+   <span>アイテムジャンル(名前)</span> <%= f.text_field :item_genre_name %>
+   <span>アイテムジャンル(かな)</span><%= f.text_field :item_genre_kana %>
+   <span><%= f.attachment_field :genre_image %></span>
+    <%= f.radio_button :is_active, true, :checked => true  %>  有効
+    <%= f.radio_button :is_active, false %>  無効
+    <%= f.submit '変更', class:"btn btn-primary" %>
+<% end %>

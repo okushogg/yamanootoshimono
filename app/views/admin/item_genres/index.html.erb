@@ -1,7 +1,7 @@
-<h1>アイテムジャンル一覧</h1>
+<h1>アイテムジャンル</h1>
 
 
-	    <h3>ジャンル新規登録</h3>
+	    <h3>アイテムジャンル新規登録</h3>
         <%= form_with model: @item_genre, url: admin_item_genres_path, local:true do |f| %>
          <span>アイテムジャンル(名前)</span> <%= f.text_field :item_genre_name %>
          <span>アイテムジャンル(かな)</span><%= f.text_field :item_genre_kana %>
@@ -10,15 +10,8 @@
           <%= f.radio_button :is_active, false %>  無効
           <%= f.submit '追加', class:"btn btn-primary" %>
         <% end %>
-        
-  	    <table class="item_genre_info has_border">
-			<thead>
-				<tr>
-					<th>ジャンル名</th>
-					<th>状態</th>
-				<th></th>
-				</tr>
-			</thead>
+     <h3>アイテムジャンル一覧</h3>
+  	 <table class="item_genre_info has_border">
 			<tbody>
 				<% @item_genres.each do |item_genre| %>
 					<tr>
