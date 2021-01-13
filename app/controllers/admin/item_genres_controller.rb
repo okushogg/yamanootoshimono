@@ -31,7 +31,7 @@ class Admin::ItemGenresController < ApplicationController
   end
 
   def destroy
-    @item_genre = ItemGenre.find(item_genre_params[:id])
+    @item_genre = ItemGenre.find(params[:id])
     @item_genre.destroy
     redirect_to admin_item_genres_path
   end

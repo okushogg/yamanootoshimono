@@ -7,7 +7,16 @@ Rails.application.routes.draw do
   namespace :admin do
     get 'top' => 'homes#top', as: 'top'
     resources :item_genres
-    resources :prefectures
+    resources :prefectures do
+      member do
+        post 'create_mountain_name'
+      end
+    end
+    
+    
+    #post 'prefectures/create_mountain_name' => 'prefectures#create_mountain_name', as: 'create_mountain_name'
+    
+    
     resources :mountain_names
     resources :users
     resources :posts

@@ -1,4 +1,4 @@
 class Prefecture < ApplicationRecord
     has_many :mountain_names
-    attachment :prefectur
+    attachment :prefecture_image
 end

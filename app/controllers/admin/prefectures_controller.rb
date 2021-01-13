@@ -11,8 +11,35 @@ class Admin::PrefecturesController < ApplicationController
   end
 
   def show
+    @prefecture = Prefecture.find(params[:id])
+    @mountain_names = MountainName.all
+    @mountain_name = MountainName.new
   end
 
+  def create_mountain_name
+
+    @prefecture = Prefecture.find(params[:id])
+    @mountain_name = MountainName.new(mountain_name_params)
+    if @mountain_name.save
+      redirect_to admin_prefecture_path(@prefecture.id),flash:{notice:'新しい山を登録しました。'}
+    else
+      @prefecture = Prefecture.find(params[:id])
+      @mountain_names = MountainName.all
+      render "admin/prefectures/show"
+    end
+  end
+  
   def edit
   end
+  
+
+  private
+  def prefecture_params
+    params.require(:prefecture).permit(:prefecture_name, :prefecture_name_kana, :prefecture_image)
+  end
+  
+  def mountain_name_params
+    params.require(:mountain_name).permit(:mountain_name, :mountain_name_kana)
+  end
+  
 end

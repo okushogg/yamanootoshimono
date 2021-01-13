@@ -1,1 +1,17 @@
+<h1><%= @prefecture.prefecture_name %></h1>
+<%= image_tag "prefecture#{@prefecture.id}.png" %>
 
+<h3>お探しの山がない場合は追加してください</h3>
+<%= form_with model: @mountain_name, url: create_mountain_name_admin_prefecture_path, local:true do |f| %>
+  <span>山名</span> <%= f.text_field :mountain_name %>
+  <span>山名(かな)</span><%= f.text_field :mountain_name_kana %>
+  <%= f.submit '追加', class:"btn btn-primary" %>
+<% end %>
+
+<tr>
+<td>
+<% @mountain_names.each do |mountain_name| %>
+<%= link_to mountain_name.mountain_name,admin_mountain_name_path(mountain_name.id), class: "underline" %>
+<% end %>
+</td>
+</tr>
