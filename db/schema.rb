@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_12_021551) do
+ActiveRecord::Schema.define(version: 2021_01_12_084356) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 2021_01_12_021551) do
   end
 
   create_table "comments", force: :cascade do |t|
+    t.string "comment_user_name"
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "post_id"
@@ -32,11 +34,11 @@ ActiveRecord::Schema.define(version: 2021_01_12_021551) do
 
   create_table "item_genres", force: :cascade do |t|
     t.string "item_genre_name"
+    t.string "item_genre_kana"
+    t.string "genre_image_id"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "genre_image_id"
-    t.string "item_genre_kana"
     t.index ["item_genre_name"], name: "index_item_genres_on_item_genre_name"
   end
 
@@ -70,6 +72,10 @@ ActiveRecord::Schema.define(version: 2021_01_12_021551) do
     t.string "prefecture_name_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "prefecture_image"
+    t.string "region"
+    t.index ["prefecture_name"], name: "index_prefectures_on_prefecture_name"
+    t.index ["prefecture_name_kana"], name: "index_prefectures_on_prefecture_name_kana"
   end
 
   create_table "users", force: :cascade do |t|
