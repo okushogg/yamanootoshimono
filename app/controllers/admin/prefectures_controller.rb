@@ -14,13 +14,13 @@ class Admin::PrefecturesController < ApplicationController
     @prefecture = Prefecture.find(params[:id])
     @mountain_names = MountainName.all
     @mountain_name = MountainName.new
+    # session[:mountain_id] = params[:prefecture][:mountain_id]
   end
 
   def create_mountain_name
-
     @prefecture = Prefecture.find(params[:id])
     @mountain_name = MountainName.new(mountain_name_params)
-    if @mountain_name.save
+    if @mountain_name.save!
       redirect_to admin_prefecture_path(@prefecture.id),flash:{notice:'新しい山を登録しました。'}
     else
       @prefecture = Prefecture.find(params[:id])
@@ -29,8 +29,10 @@ class Admin::PrefecturesController < ApplicationController
     end
   end
   
-  def edit
+  def post_new
+    session[:mountain_id] = params[:prefecture][:mountain_id]
   end
+  
   
 
   private
@@ -39,7 +41,7 @@ class Admin::PrefecturesController < ApplicationController
   end
   
   def mountain_name_params
-    params.require(:mountain_name).permit(:mountain_name, :mountain_name_kana)
+    params.require(:mountain_name).permit(:mountain_name, :mountain_name_kana, :prefecture_id )
   end
   
 end

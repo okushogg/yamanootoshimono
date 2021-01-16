@@ -1,9 +1,10 @@
 class Post < ApplicationRecord
-    belongs_to :mountain_name, :prefecture, :item_genre, :users
-    has_many :comments
+    # belongs_to :mountain_name, :item_genre, :user,optional: true
+    has_many :comments, :post_images
     
     validates :detail, presence: true, length: { in: 1..500 }
     validates :strage_place, presence: true
-    
-    attachment :item_image
+   
+    accepts_attachments_for :post_images, attachment: :image
+    # attachment :item_image
 end

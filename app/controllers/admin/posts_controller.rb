@@ -1,10 +1,17 @@
 class Admin::PostsController < ApplicationController
-  def index
+  def new
+  
   end
 
-  def show
+  def confirm
   end
 
   def edit
   end
+  
+  def complete
+  end
+  
 end
+
+

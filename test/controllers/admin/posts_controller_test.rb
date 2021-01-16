@@ -1,18 +1,18 @@
 require 'test_helper'
 
 class Admin::PostsControllerTest < ActionDispatch::IntegrationTest
-  test "should get index" do
-    get admin_posts_index_url
+  test "should get new" do
+    get admin_posts_new_url
     assert_response :success
   end
 
-  test "should get show" do
-    get admin_posts_show_url
+  test "should get confirm" do
+    get admin_posts_confirm_url
     assert_response :success
   end
 
-  test "should get edit" do
-    get admin_posts_edit_url
+  test "should get complete" do
+    get admin_posts_complete_url
     assert_response :success
   end
 

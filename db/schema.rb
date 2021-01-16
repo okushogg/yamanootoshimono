@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_13_090057) do
+ActiveRecord::Schema.define(version: 2021_01_16_093629) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -52,12 +52,19 @@ ActiveRecord::Schema.define(version: 2021_01_13_090057) do
     t.index ["mountain_name_kana"], name: "index_mountain_names_on_mountain_name_kana"
   end
 
+  create_table "post_images", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.string "image_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.integer "prefecture.id"
     t.integer "item_genre_id"
     t.integer "user_id"
     t.integer "mountain_name_id"
-    t.integer "item_image_id"
+    t.string "item_image_id"
     t.date "found_day"
     t.string "post_montain_name"
     t.text "detail"

@@ -1,0 +1,21 @@
+
+
+<%= form_with model: @posts, url: pick_up_create_path, local:true do |f| %>
+
+<h3>都道府県・山名</h3> 
+<%= @mountain_name.prefecture.prefecture_name %>・<%= @mountain_name.mountain_name %>
+<%= f.hidden_field :prefecture_id, value: @prefecture.id %>
+<%= f.hidden_field :mountian_name_id, value: @mountian_name.prefecture.id %>
+<h3>アイテムジャンル</h3>
+<%= @item_genre.item_genre_name %>
+<h3>日時</h3>
+<%= f.date_field :found_day %> 
+<h3>写真</h3>
+<%= f.attachment_field :post_images_images, multiple: true %>
+<h3>詳細情報</h3>
+<%= f.text_field :detail %>
+<h3>届け先</h3>
+<%= f.text_field :strage_place %>  
+
+<%= f.submit '投稿', class:"btn btn-primary" %>
+<% end %>

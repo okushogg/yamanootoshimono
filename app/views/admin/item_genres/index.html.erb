@@ -2,7 +2,7 @@
 
 
 	    <h3>アイテムジャンル新規登録</h3>
-	    <%= form_with model: @item_genre, url: admin_item_genres_path, local:true do |f| %>
+	    <%= form_with model: @item_genre, url: admin_mountain_name_item_genres_path, local:true do |f| %>
 	     <span>アイテムジャンル(名前)</span> <%= f.text_field :item_genre_name %>
 	     <span>アイテムジャンル(かな)</span><%= f.text_field :item_genre_kana %>
 	     <span><%= f.attachment_field :genre_image %></span>
@@ -17,11 +17,11 @@
 				<% @item_genres.each do |item_genre| %>
 					<tr>
 				<td>
-		          <%= link_to admin_item_genre_path(item_genre.id) do %>
+		          <%= link_to admin_mountain_name_item_genres_path(item_genre.id) do %>
 		            <%= attachment_image_tag item_genre, :genre_image, format: 'jpg', size:"100x100", fallback: "no_image.jpg" %>
 		          <% end %>
 		        </td>
-						<td><%= link_to item_genre.item_genre_name, item_genre_path(item_genre.id), class: "underline" %></td>
+						<td><%= link_to item_genre.item_genre_name, new_admin_post_path(item_genre.id: item_genre.id, mountain_id: params[:id]), class: "underline" %></td>
 						<td>
 							<% if item_genre.is_active? %>
 								<span class="text-active">有効</span>
@@ -29,7 +29,7 @@
 								<span class="text-invalid">無効</span>
 							<% end %>
 						</td>
-						<td class="text-center"><%= link_to "編集", edit_admin_item_genre_path(item_genre.id), class: "btn btn-success" %></td>
+						<td class="text-center"><%= link_to "編集", edit_admin_mountain_name_item_genre_path(id: item_genre.id), class: "btn btn-success" %></td>
 					</tr>
 				<% end %>
 			</tbody>

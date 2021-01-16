@@ -18,7 +18,7 @@ class Admin::ItemGenresController < ApplicationController
   end
 
   def edit
-    @item_genre = ItemGenre.find(params[:id])
+    @item_genre = ItemGenre.find(item_genre.id)
   end
 
   def update

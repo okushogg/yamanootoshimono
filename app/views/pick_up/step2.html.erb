@@ -1,0 +1,14 @@
+<h1><%= @prefecture.prefecture_name %></h1>
+<%= image_tag "prefecture#{@prefecture.id}.png" %>
+
+<table>
+  <tbody>
+    <tr>
+      <td>
+        <% @mountain_names.each do |mountain_name| %>
+        <%= link_to mountain_name.mountain_name,step3_path(mountain_name, mountain_name_id: mountain_name.id ), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
