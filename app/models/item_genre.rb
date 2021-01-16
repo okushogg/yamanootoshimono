@@ -1,5 +1,5 @@
 class ItemGenre < ApplicationRecord
-    belongs_to :posts, optional: true
+    has_many :posts
     validates :item_genre_name, presence: true, length: { in: 1..20 }
     attachment :genre_image
 end

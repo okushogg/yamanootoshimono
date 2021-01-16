@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get 'pick_up/step4' => 'pick_up#step4', as: 'step4'
   get 'pick_up/confirm' => 'pick_up#confirm', as: 'confirm' 
   get 'pick_up/complete' => 'pick_up#complete', as: 'complete' 
-  put 'pick_up/create' => 'pick_up#create', as: 'pick_up_create' 
+  post 'pick_up/create' => 'pick_up#create', as: 'pick_up_create' 
   
   
   namespace :admin do

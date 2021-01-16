@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_16_093629) do
+ActiveRecord::Schema.define(version: 2021_01_16_103709) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,11 +60,10 @@ ActiveRecord::Schema.define(version: 2021_01_16_093629) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "prefecture.id"
+    t.integer "prefecture_id"
     t.integer "item_genre_id"
     t.integer "user_id"
     t.integer "mountain_name_id"
-    t.string "item_image_id"
     t.date "found_day"
     t.string "post_montain_name"
     t.text "detail"

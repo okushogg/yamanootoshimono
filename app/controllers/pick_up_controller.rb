@@ -33,11 +33,12 @@ class PickUpController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    if @post.save
+    @post.user_id = current_user.id
+    if @post.save!
       redirect_to complete_path,flash:{notice:'新規投稿完了しました。'}
     else
       @mountain_name = MountainName.find(params[:mountain_name_id])
-     @item_genre = ItemGenre.find(params[:item_genre_id])
+      @item_genre = ItemGenre.find(params[:item_genre_id])
       render "step4"
     end
   end
@@ -47,7 +48,7 @@ class PickUpController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:prefecture_id, :mountain_name_id, :item_genre, :item_image_id, :found_day, :detail, :strage_place, :is_solved, post_images_images: [] )
+    params.require(:post).permit(:prefecture_id, :mountain_name_id, :item_genre_id, :item_image_id, :found_day, :detail, :strage_place, :is_solved, post_images_images: [] )
   end
   
 end
