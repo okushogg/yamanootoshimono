@@ -44,7 +44,11 @@ Rails.application.routes.draw do
     resources :posts
     resources :item_genres
     resources :prefectures
-    resources :comments
+    
+  end
+  
+  resources :posts do
+    resources :comments, only:[:create, :edit, :destory]
   end
   
   get 'users/unsubscribe' => 'users#unsubscribe'

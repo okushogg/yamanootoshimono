@@ -1,0 +1,9 @@
+<tr id="comment-<%= comment.id %>">
+
+.
+. # 中にはコメントの骨組みや中身を記述してください
+.
+
+  <%= link_to icon('fas', 'trash-alt'), comment_path(comment),method: :delete, remote: true, data: { confirm: '削除してよろしいですか？' } %>
+
+</tr>
