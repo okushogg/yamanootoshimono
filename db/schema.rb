@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_233216) do
+ActiveRecord::Schema.define(version: 2021_01_17_233947) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 2021_01_17_233216) do
     t.boolean "is_solved", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "prefectures", force: :cascade do |t|
+    t.string "prefecture_name", null: false
+    t.string "prefecture_name_kana", null: false
+    t.string "region", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["prefecture_name", "prefecture_name_kana"], name: "index_prefectures_on_prefecture_name_and_prefecture_name_kana"
   end
 
   create_table "users", force: :cascade do |t|
