@@ -1,15 +1,29 @@
 Rails.application.routes.draw do
-  get 'item_genre/index'
-  get 'item_genre/show'
-  get 'prefectures/index'
-  get 'prefectures/show'
-  get 'pick_up/step1'
-  get 'pick_up/step2'
-  get 'pick_up/step3'
-  get 'pick_up/step4'
-  get 'pick_up/complete'
-  get 'homes/top'
-  get 'homes/about'
+  
+  # アイテムジャンルに関するルーティング
+  resources :item_genres, only:[:index, :show] 
+  
+  # 都道府県に関するルーティング
+  resources :prefectures, only:[:show, :index] do
+  # 山名を追加に関するルーティング
+      member do
+        post 'create_place'
+      end
+  end
+  
+  # 「拾った」に関するルーティング
+  get 'pick_up/step1' => 'pick_up#step1', as: 'step1' 
+  get 'pick_up/step2' => 'pick_up#step2', as: 'step2' 
+  get 'pick_up/step3' => 'pick_up#step3', as: 'step3'
+  get 'pick_up/step4' => 'pick_up#step4', as: 'step4'
+  get 'pick_up/confirm' => 'pick_up#confirm', as: 'confirm' 
+  get 'pick_up/complete' => 'pick_up#complete', as: 'complete' 
+  post 'pick_up/create' => 'pick_up#create', as: 'pick_up_create' 
+  
+  # ホームに関するルーティング
+  root 'homes#top'
+  get 'homes/about' => 'homes#about', as: 'about'
   devise_for :users
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
