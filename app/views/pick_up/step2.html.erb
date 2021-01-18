@@ -1,2 +1,21 @@
-<h1>PickUp#step2</h1>
-<p>Find me in app/views/pick_up/step2.html.erb</p>
+<!--都道府県情報表示部分-->
+<h1><%= @prefecture.prefecture_name %></h1>
+<%= link_to '都道府県一覧へ', prefectures_path %><br>
+<%= image_tag "prefectures/prefecture#{@prefecture.id}.png" %>
+<!--都道府県情報表示部分-->
+
+
+
+<!--山名表示部分-->
+<table>
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td>
+          <%= link_to place.name, step3_path(place, place_id: place.id ), class: "underline" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!--山名表示部分-->

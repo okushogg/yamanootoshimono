@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :prefecture 
-  belongs_to :place, :dependent => :nullify
+  belongs_to :place
   belongs_to :item_genre
   belongs_to :user
   has_many :comments

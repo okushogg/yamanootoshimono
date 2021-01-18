@@ -3,7 +3,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
     create_table :posts do |t|
       t.integer "prefecture_id", nill:false
       t.integer "place_id", nill:false
-      t.integer "item_id", nill:false
+      t.integer "item_genre_id", nill:false
       t.integer "user_id", nill:false
       
       t.date "found_day", nill:false

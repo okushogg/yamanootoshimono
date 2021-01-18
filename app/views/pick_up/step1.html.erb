@@ -1,2 +1,67 @@
-<h1>PickUp#step1</h1>
-<p>Find me in app/views/pick_up/step1.html.erb</p>
+<h2>都道府県一覧</h2>
+<table>
+  <tbody>
+    <td>北海道・東北地方</td>
+    <tr>
+      <td>
+        <% @regions1.each do |region1| %>
+        <%= link_to region1.prefecture_name, step2_path(region1, prefecture_id: region1.id), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+    
+    <td>関東地方</td>
+    <tr>
+      <td>
+        <% @regions2.each do |region2| %>
+        <%= link_to region2.prefecture_name, step2_path(region2, prefecture_id: region2.id), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+    
+    <td>中部地方</td>
+    <tr>
+      <td>
+        <% @regions3.each do |region3| %>
+        <%= link_to region3.prefecture_name, step2_path(region3, prefecture_id: region3.id), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+    
+    <td>近畿地方</td>
+    <tr>
+      <td>
+        <% @regions4.each do |region4| %>
+        <%= link_to region4.prefecture_name, step2_path(region4, prefecture_id: region4.id), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+    
+    <td>中国地方</td>
+    <tr>
+      <td>
+        <% @regions5.each do |region5| %>
+        <%= link_to region5.prefecture_name, step2_path(region5, prefecture_id: region5.id), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+    
+    <td>四国地方</td>
+    <tr>
+      <td>
+        <% @regions6.each do |region6| %>
+        <%= link_to region6.prefecture_name, step2_path(region6, prefecture_id: region6.id), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+    
+    <td>九州・沖縄地方</td>
+    <tr>
+      <td>
+        <% @regions7.each do |region7| %>
+        <%= link_to region7.prefecture_name, step2_path(region7, prefecture_id: region7.id), class: "underline" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

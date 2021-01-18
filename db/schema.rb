@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_002108) do
     t.string "name", null: false
     t.string "name_kana", null: false
     t.string "genre_image_id"
+    t.boolean "is_original", default: false, null: false
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_002108) do
   create_table "posts", force: :cascade do |t|
     t.integer "prefecture_id"
     t.integer "place_id"
-    t.integer "item_id"
+    t.integer "item_genre_id"
     t.integer "user_id"
     t.date "found_day"
     t.text "detail"
