@@ -1,2 +1,2 @@
-module ItemGenreHelper
+module ItemGenresHelper
 end

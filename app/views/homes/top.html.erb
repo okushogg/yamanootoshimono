@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-<h2>toppage</h2>
+<h2><%="ようこそ#{user.name}さん" %></h2>
 <% else %>
-<%=ようこそゲストさん %>
+<h2>ようこそゲストさん</h2>
 <% end %>

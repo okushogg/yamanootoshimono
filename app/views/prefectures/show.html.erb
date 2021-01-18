@@ -1,2 +1,30 @@
-<h1>Prefectures#show</h1>
-<p>Find me in app/views/prefectures/show.html.erb</p>
+<!--都道府県情報表示部分-->
+<h1><%= @prefecture.prefecture_name %></h1>
+<%= link_to '都道府県一覧へ', prefectures_path %><br>
+<%= image_tag "prefectures/prefecture#{@prefecture.id}.png" %>
+
+
+<!--山名追加用フォーム-->
+<h3>お探しの山がない場合は追加してください</h3>
+<%= form_with model: @place, url: create_place_prefecture_path, local:true do |f| %>
+  <span>山名</span> <%= f.text_field :name %>
+  <span>山名(かな)</span><%= f.text_field :name_kana %>
+  <%= f.hidden_field :prefecture_id, value: @prefecture.id %>
+  <%= f.submit '追加', class:"btn btn-primary" %>
+<% end %>
+<!--山名追加用フォーム-->
+
+<!--山名表示部分-->
+<table>
+  <tbody>
+    <% @places.each do |place| %>
+    <tr>
+    <td>
+    <%= place.name %>
+    <%#= link_to place.name, _path, class: "underline" %>
+    <% end %>
+    </td>
+    </tr>
+  </tbody>
+</table>
+<!--山名表示部分-->
