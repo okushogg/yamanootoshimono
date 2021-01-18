@@ -22,7 +22,8 @@ ActiveRecord::Schema.define(version: 2021_01_18_002108) do
 
   create_table "item_genres", force: :cascade do |t|
     t.string "name", null: false
-    t.string "namw_kana", null: false
+    t.string "name_kana", null: false
+    t.string "genre_image_id"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -40,6 +40,6 @@ class ItemGenresController < ApplicationController
   
   private
   def item_genre_params
-    params.require(:item_genre).permit(:item_genre_name, :item_genre_kana, :genre_image, :is_active)
+    params.require(:item_genre).permit(:name, :name_kana, :is_active)
   end
 end

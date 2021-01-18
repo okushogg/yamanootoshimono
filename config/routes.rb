@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
   # アイテムジャンルに関するルーティング
-  resources :item_genres, only:[:index, :show] 
+  resources :item_genres
   
   # 都道府県に関するルーティング
   resources :prefectures, only:[:show, :index] do
