@@ -10,12 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_234821) do
+ActiveRecord::Schema.define(version: 2021_01_18_002108) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
     t.integer "user_id", null: false
     t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "item_genres", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "namw_kana", null: false
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
