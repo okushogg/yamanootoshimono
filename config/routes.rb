@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'prefectures/index'
+  get 'prefectures/show'
   get 'pick_up/step1'
   get 'pick_up/step2'
   get 'pick_up/step3'
