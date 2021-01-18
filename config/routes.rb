@@ -23,6 +23,8 @@ Rails.application.routes.draw do
   # ホームに関するルーティング
   root 'homes#top'
   get 'homes/about' => 'homes#about', as: 'about'
+  
+  # Userのサインアップ、ログイン機能に関するルーティング
   devise_for :users
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
