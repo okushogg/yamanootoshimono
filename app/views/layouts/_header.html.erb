@@ -1,5 +1,14 @@
 <% if user_signed_in? %>
 <li>
+<%= link_to "Top", root_path %>
+</li>
+<li>
+<%= link_to "都道府県", prefectures_path %>
+</li>
+<li>
+<%= link_to "アイテムジャンル一覧", item_genres_path %>
+</li>
+<li>
 <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
 </li>
 <% else %>

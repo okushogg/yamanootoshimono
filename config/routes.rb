@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   
+  
+  resources :posts, only:[:index, :show, :edit, :update, :delete ] do
+    resources :comments, only:[:index, :create, :edit, :update, :delete ]
+  end
+  
   # アイテムジャンルに関するルーティング
   resources :item_genres
   

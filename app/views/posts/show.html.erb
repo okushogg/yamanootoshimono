@@ -1,0 +1,40 @@
+<div class="container pt-5">
+<div class="row mb-3">
+<div class="col-lg-8 offset-lg-2">
+<h4>場所</h4>
+<h4> <%= "#{@post.prefecture.prefecture_name} #{@post.place.name}" %> </h4>
+
+<h4>アイテムジャンル</h4>
+<h4><%= @post.item_genre.name %></h4>
+
+<h4>写真</h4>
+<% if @post.post_images.present? %>
+  <% @post.post_images.each do |image| %>
+  <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+  <% end %>
+<% else %>
+  <%= image_tag 'no_image.png', size: '200x200' %>
+<% end %>
+
+<h4>詳細情報</h4>          
+<%= @post.detail %>
+
+<h4>届け先</h4>
+<h4><%= @post.strage_place %></h4>
+
+ <%= form_with model:[@post, @comment], local: true do |f| %>
+<h6>コメント</h6>
+<%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" , rows: "4" %>
+<%= f.submit 'コメント投稿', class: "btn btn-primary" %>
+<% end %>
+</div>
+</div>
+
+<% @comments.each do |comment|%>
+<%= comment.user.pid %><br>
+<%= link_to edit_post_comment_path(@post.id, comment.id) do%>
+<%= comment.content %>
+<% end %>
+<% end %>
+
+<%= link_to "投稿一覧へ", posts_path %>
