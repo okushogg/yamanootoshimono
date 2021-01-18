@@ -4,4 +4,8 @@ class PrefecturesController < ApplicationController
 
   def show
   end
+  
+  def create_place
+  end
+  
 end

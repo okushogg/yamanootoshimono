@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'item_genre/index'
+  get 'item_genre/show'
   get 'prefectures/index'
   get 'prefectures/show'
   get 'pick_up/step1'
