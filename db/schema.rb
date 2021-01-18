@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_17_233947) do
+ActiveRecord::Schema.define(version: 2021_01_17_234821) do
 
   create_table "comments", force: :cascade do |t|
     t.text "content"
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2021_01_17_233947) do
     t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "places", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "name_kana", null: false
+    t.integer "prefecture_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name", "name_kana"], name: "index_places_on_name_and_name_kana"
   end
 
   create_table "post_images", force: :cascade do |t|
