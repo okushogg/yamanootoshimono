@@ -5,7 +5,7 @@
 <%= form_with model: @post, url: pick_up_create_path, local:true do |f| %>
 <h3>都道府県・山名</h3> 
 <%= @place.prefecture.prefecture_name %>・<%= @place.name %>
-<%= f.hidden_field :prefecture_id, value: @place.prefecture_id %>
+<%= f.hidden_field :prefecture_id, value: @place.prefecture.id %>
 <%= f.hidden_field :place_id, value: @place.id %>
 <h3>アイテムジャンル</h3>
 <%= @item_genre.name%>

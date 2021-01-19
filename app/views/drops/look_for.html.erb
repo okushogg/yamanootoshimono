@@ -1,0 +1,24 @@
+
+  <table class='table table-hover table-inverse'>
+    <tbody>
+      <% @result.each do |post| %>
+        <tr>
+            <td>
+            <%= link_to post_path(post.id) do %>
+              <% if post.post_images.present? %>
+              <% post.post_images.each do |image| %>
+                <%= attachment_image_tag image, :image, :fill, 50, 50 %>
+              <% end %>
+              <% else %>
+                <%= image_tag 'no_image.png', size: '50x50' %>
+              <% end %>
+              <% end %>
+            </td>
+            <td><%= post.found_day %></td>
+            <td><%= post.item_genre.name %></td>
+            <td><%= post.place.name %></td>
+            <td><%= post.prefecture.prefecture_name %></td>
+          </tr>
+        <% end %>
+        </tbody>
+    </table>

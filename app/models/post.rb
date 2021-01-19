@@ -9,4 +9,6 @@ class Post < ApplicationRecord
   validates :detail, presence: true, length: { in: 1..500 }
   validates :strage_place, presence: true
   accepts_attachments_for :post_images, attachment: :image
+  
+ 
 end

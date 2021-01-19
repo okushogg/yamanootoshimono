@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  
+  # ポストとコメントに関するルーティング
   resources :posts, only:[:index, :show, :edit, :update, :delete ] do
     resources :comments, only:[:index, :create, :edit, :update, :delete ]
   end
@@ -24,6 +24,15 @@ Rails.application.routes.draw do
   get 'pick_up/confirm' => 'pick_up#confirm', as: 'confirm' 
   get 'pick_up/complete' => 'pick_up#complete', as: 'complete' 
   post 'pick_up/create' => 'pick_up#create', as: 'pick_up_create' 
+  
+   # 「落とした」に関するルーティング
+  get 'drops/phase1' => 'drops#phase1', as: 'phase1' 
+  get 'drops/phase2' => 'drops#phase2', as: 'phase2' 
+  get 'drops/phase3' => 'drops#phase3', as: 'phase3' 
+  get 'drops/phase4' => 'drops#phase4', as: 'phase4' 
+  get 'drops/result' => 'drops#result', as: 'result' 
+  get 'drops/look_for' => 'drops#look_for', as: 'look_for'
+  
   
   # ホームに関するルーティング
   root 'homes#top'
