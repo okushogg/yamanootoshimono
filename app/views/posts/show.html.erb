@@ -20,21 +20,32 @@
 <%= @post.detail %>
 
 <h4>届け先</h4>
-<h4><%= @post.strage_place %></h4>
+<h6><%= @post.strage_place %></h6>
 
- <%= form_with model:[@post, @comment], local: true do |f| %>
-<h6>コメント</h6>
-<%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" , rows: "4" %>
-<%= f.submit 'コメント投稿', class: "btn btn-primary" %>
-<% end %>
-</div>
-</div>
+<br>
+<h5>コメント一覧</h5>
 
+<!--コメント一覧部分-->
 <% @comments.each do |comment|%>
-<%= comment.user.pid %><br>
-<%= link_to edit_post_comment_path(@post.id, comment.id) do%>
-<%= comment.content %>
+  <%= comment.user.name %><br>
+  <%= comment.content %>
+  <%= link_to '編集', edit_post_comment_path(@post.id, comment.id), class: "btn btn-primary"%>
 <% end %>
-<% end %>
+<!--コメント一覧部分-->
 
+<!--コメント投稿部分-->
+<%= form_with model:[@post, @comment], local: true do |f| %>
+  <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" , rows: "4" %>
+  <%= f.submit 'コメント投稿', class: "btn btn-primary" %>
+<% end %>
+<!--コメント投稿部分-->
+
+</div>
+</div>
+
+
+
+
+
+<br>
 <%= link_to "投稿一覧へ", posts_path %>
