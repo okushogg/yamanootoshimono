@@ -16,7 +16,7 @@ class PrefecturesController < ApplicationController
   end
   
   def create_place
-    @prefecture = Prefecture.find(params[:id])
+    @prefecture = Prefecture.find(params[:prefecture_id])
     @place = Place.new(place_params)
     if @place.save!
       redirect_to prefecture_path(@prefecture.id),flash:{notice:'新しい山を登録しました。'}

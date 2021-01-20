@@ -4,7 +4,15 @@
 <%= image_tag "prefectures/prefecture#{@prefecture.id}.png" %>
 <!--都道府県情報表示部分-->
 
-
+<!--山名追加用フォーム-->
+<h3>お探しの山がない場合は追加してください</h3>
+<%= form_with model: @place, url: step2_create_place_path(@prefecture.id), local:true do |f| %>
+  <span>山名</span> <%= f.text_field :name %>
+  <span>山名(かな)</span><%= f.text_field :name_kana %>
+  <%= f.hidden_field :prefecture_id, value: @prefecture.id %>
+  <%= f.submit '追加', class:"btn btn-primary" %>
+<% end %>
+<!--山名追加用フォーム-->
 
 <!--山名表示部分-->
 <table>
