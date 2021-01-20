@@ -22,19 +22,21 @@
 <h4>届け先</h4>
 <h6><%= @post.strage_place %></h6>
 
+
+<!--コメント一覧部分-->
 <br>
 <h5>コメント一覧</h5>
 
-<!--コメント一覧部分-->
 <% @comments.each do |comment|%>
   <%= comment.user.name %><br>
   <%= comment.content %>
+  <%= comment.updated_at %>
   <%= link_to '編集', edit_post_comment_path(@post.id, comment.id), class: "btn btn-primary"%>
 <% end %>
 <!--コメント一覧部分-->
 
 <!--コメント投稿部分-->
-<%= form_with model:[@post, @comment], local: true do |f| %>
+<%= form_with model:[@post, @comment],  local: true do |f| %>
   <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" , rows: "4" %>
   <%= f.submit 'コメント投稿', class: "btn btn-primary" %>
 <% end %>
@@ -42,10 +44,6 @@
 
 </div>
 </div>
-
-
-
-
-
+<%= link_to '投稿編集', edit_post_path(@post.id) %>
 <br>
 <%= link_to "投稿一覧へ", posts_path %>

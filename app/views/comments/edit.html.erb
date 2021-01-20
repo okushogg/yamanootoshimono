@@ -1,0 +1,8 @@
+<!--コメント投稿部分-->
+<%= form_with model:[@post, @comment],  local: true do |f| %>
+  <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" , rows: "4" %>
+  <%= f.submit 'コメント編集', class: "btn btn-primary" %>
+<% end %>
+<!--コメント投稿部分-->
+
+<%#= link_to("/posts/#{@post.id}/destroy",{method:"post"}) do %>

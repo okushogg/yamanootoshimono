@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
   # ポストとコメントに関するルーティング
-  resources :posts, only:[:index, :show, :edit, :update, :delete ] do
-    resources :comments, only:[:index, :create, :edit, :update, :delete ]
+  resources :posts, only:[:index, :show, :edit, :update, :destroy ] do
+    resources :comments, only:[:create, :edit, :update, :destroy ]
   end
   
   # アイテムジャンルに関するルーティング

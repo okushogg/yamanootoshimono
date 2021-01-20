@@ -14,25 +14,27 @@
       <%= f.submit :"検索" %>
     <% end %>
   <!--検索フォーム-->
- 
+
+<!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
 <table class='table table-hover table-inverse'>
     <tbody>
       <% @posts.each do |post| %>
        <tr>
           <td>
             <% if post.post_images.present? %>
-              <% post.post_images.each do |image| %>
-                <%= attachment_image_tag image, :image, :fill, 50, 50 %>
-              <% end %>
+                <% post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 50, 50 %>
+                <% end %>
             <% else %>
               <%= image_tag 'no_image.png', size: '50x50' %>
             <% end %>
           </td>
           <td><%= post.found_day %></td>
           <td><%= post.item_genre.name %></td>
-          <td><%= post.place.name %></td>
+          <td><%= link_to post.place.name, post_path(post.id) %></td>
           <td><%= post.prefecture.prefecture_name %></td>
         </tr>
       <% end %>
     </tbody>
 </table>
+<!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
