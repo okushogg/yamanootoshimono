@@ -1,0 +1,40 @@
+  <!--検索フォーム-->
+    <%= search_form_for(@q, url:look_for_path) do |f| %>
+      <!--詳細に対する部分検索-->
+      <%= f.label :detail_cont, "キーワード検索" %>
+      <%= f.search_field :detail_cont, placeholder: "例：赤,モンベル…" %> <br>
+      <br>
+      <!--期間で検索する-->
+      <%= f.label  "期間" %>
+      <%= f.date_field :found_day_gteq %> ~ <%= f.date_field :found_day_lteq %>
+      
+      <!--すでに絞り込んだ条件（場所、アイテムジャンル）-->
+      <%= f.hidden_field :item_genre_id_eq, value: @item_genre.id %> 
+      <%= f.hidden_field :place_id_eq, value: @place.id %> 
+      <%= f.submit :"検索" %>
+    <% end %>
+  <!--検索フォーム-->
+
+<!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
+<table class='table table-hover table-inverse'>
+    <tbody>
+      <% @posts.each do |post| %>
+       <tr>
+          <td>
+            <% if post.post_images.present? %>
+                <% post.post_images.each do |image| %>
+                  <%= attachment_image_tag image, :image, :fill, 50, 50 %>
+                <% end %>
+            <% else %>
+              <%= image_tag 'no_image.png', size: '50x50' %>
+            <% end %>
+          </td>
+          <td><%= post.found_day %></td>
+          <td><%= post.item_genre.name %></td>
+          <td><%= link_to post.place.name, post_path(post.id) %></td>
+          <td><%= post.prefecture.prefecture_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+</table>
+<!--場所、アイテムジャンル絞り込み検索結果一覧部分-->

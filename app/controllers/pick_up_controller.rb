@@ -1,6 +1,6 @@
 class PickUpController < ApplicationController
   def step1
-    session[:id] = params[:prefecture_id]
+    # session[:id] = params[:prefecture_id]
     @regions1 = Prefecture.where(region: "hokkaido_touhoku")
     @regions2 = Prefecture.where(region: "kanto")
     @regions3 = Prefecture.where(region: "chubu")
@@ -13,6 +13,18 @@ class PickUpController < ApplicationController
   def step2
     @prefecture = Prefecture.find(params[:prefecture_id])
     @places = Place.where(prefecture_id: @prefecture.id)
+    @place = Place.new
+  end
+  
+  def create_place
+  @place = Place.new(place_params)
+    if @place.save!
+      redirect_to step1_path,flash:{notice:'新しい山を登録しました。'}
+    else
+      @prefecture = Prefecture.find(params[:prefecture_id])
+      @places = Place.where(prefecture_id: @prefecture.id)
+      render "step2"
+    end
   end
 
   def step3
@@ -38,6 +50,8 @@ class PickUpController < ApplicationController
       render "step4"
     end
   end
+  
+ 
 
   def complete
   end
@@ -45,6 +59,14 @@ class PickUpController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:prefecture_id, :place_id, :item_genre_id, :found_day, :detail, :strage_place, :is_solved, post_images_images: [] )
+  end
+  
+  def prefecture_params
+    params.require(:prefecture).permit(:prefecture_name, :prefecture_name_kana)
+  end
+  
+  def place_params
+   params.require(:place).permit(:name, :name_kana, :prefecture_id)
   end
   
 end

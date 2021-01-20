@@ -1,0 +1,21 @@
+<!--都道府県情報表示部分-->
+<h1><%= @prefecture.prefecture_name %></h1>
+<%= link_to '都道府県一覧へ', prefectures_path %><br>
+<%= image_tag "prefectures/prefecture#{@prefecture.id}.png" %>
+<!--都道府県情報表示部分-->
+
+
+
+<!--山名表示部分-->
+<table>
+  <tbody>
+    <% @places.each do |place| %>
+      <tr>
+        <td>
+          <%= link_to place.name, phase3_path(place, place_id: place.id ), class: "underline" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<!--山名表示部分-->

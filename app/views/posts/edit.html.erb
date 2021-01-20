@@ -1,15 +1,13 @@
-<div class="container pt-5">
-<div class="row mb-3">
 <h2>投稿ページ</h2>
 <div class="col-lg-12">
-<%= form_with model: @post, url: pick_up_create_path, local:true do |f| %>
+<%= form_with model: @post, url: post_path, local:true do |f| %>
 <h3>都道府県・山名</h3> 
-<%= @place.prefecture.prefecture_name %>・<%= @place.name %>
-<%= f.hidden_field :prefecture_id, value: @place.prefecture.id %>
-<%= f.hidden_field :place_id, value: @place.id %>
+<%= @post.prefecture.prefecture_name %>・<%= @post.place.name %>
+<%= f.hidden_field :prefecture_id, value: @post.prefecture.id %>
+<%= f.hidden_field :place_id, value: @post.place.id %>
 <h3>アイテムジャンル</h3>
-<%= @item_genre.name%>
-<%= f.hidden_field :item_genre_id, value: @item_genre.id %>
+<%= @post.item_genre.name%>
+<%= f.hidden_field :item_genre_id, value: @post.item_genre.id %>
 <h3>日時</h3>
 <%= f.date_field :found_day %> 
 <h3>写真</h3>
@@ -19,8 +17,7 @@
 <h3>届け先</h3>
 <%= f.text_field :strage_place, class: "form-control mb-1", placeholder: "例：xxx小屋,〇〇の交番" %>  
 
-<%= f.submit '投稿', class:"btn btn-primary" %>
+<%= f.submit '変更', class:"btn btn-primary" %>
 <% end %>
-</div>
-</div>
-</div>
+
+<%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger"%>
