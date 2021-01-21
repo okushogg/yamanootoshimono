@@ -1,8 +1,41 @@
-<% if user_signed_in? %>
-<h2><%="ようこそ#{current_user.name}さん" %></h2>
-<% else %>
-<h2>ようこそゲストさん</h2>
-<% end %>
-
-<%= link_to "拾った", step1_path %>
-<%= link_to "落とした", phase1_path %>
+<div class="jumbotron jumbotron-extend" style="margin: 0px;">
+  <div class="container">
+   
+   <!--サイト開設部分-->
+    <div class="row" style="margin-top: 10px;">
+      <div class="col-md-12">
+          <div class="main-visual">
+            <div class="main-visual-content">
+              <p class="main-visual-text">
+                山で拾ったり、落としたりした物をしらせたり、探したりするサイトです。<br/>
+                道具を長く使い、山を美しく保ち、登山を楽しみましょう。
+            </div>
+          </div>
+      </div>
+    </div>
+    
+    <!--メインボタン部分-->
+    <div class="row">
+        <!--PickUpへのボタン-->
+        <div class="col-md-6 text-center" style="margin-top: 20px;">
+          <div class="box">
+            <h2 class="main-btn-label">拾った！</h2>
+            <a href="step1_path" class="btn btn-border">  知らせる  </a>
+          </div>
+        </div>
+        <!--Dropsへのボタン-->
+        <div class="col-md-6 text-center" style="margin-top: 20px;">
+          <div class="box">
+            <h2 class="main-btn-label">落とした！</h2>
+            <a href="step1_path" class="btn btn-border">  見つける  </a>
+          </div>
+        </div>
+    </div>
+    
+     <div class="row">
+        <%= render 'posts/list', posts: @posts %>
+     </div>
+    </div>
+    
+  </div>
+</div>
