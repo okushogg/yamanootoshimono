@@ -1,6 +1,7 @@
 // Place all the styles related to the homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
 .jumbotron-extend {
     position: relative;
     height: 100vh;
@@ -30,7 +31,7 @@
 
 /* 追加 */
 .main-visual-text {
-  font-family:"游ゴシック","arial unicode ms",sans-serif;
+  font-family:system-ui;
   font-size: 20px;
   color: #fff; /* 文字色を白に変更 */
 }

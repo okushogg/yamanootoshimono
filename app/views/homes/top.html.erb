@@ -20,19 +20,21 @@
         <div class="col-md-6 text-center" style="margin-top: 20px;">
           <div class="box">
             <h2 class="main-btn-label">拾った！</h2>
-            <a href="step1_path" class="btn btn-border">  知らせる  </a>
+            <a href="pick_up/step1" class="btn btn-border">  知らせる  </a>
           </div>
         </div>
         <!--Dropsへのボタン-->
         <div class="col-md-6 text-center" style="margin-top: 20px;">
           <div class="box">
             <h2 class="main-btn-label">落とした！</h2>
-            <a href="step1_path" class="btn btn-border">  見つける  </a>
+            <a href="drops/phase1_path" class="btn btn-border">  見つける  </a>
           </div>
         </div>
     </div>
     
-     <div class="row">
+    <!--最近の落とし物-->
+     <div class="row box" style="margin-top:20px; margin-right: auto; margin-left: auto;">
+       <h3 class="col-md-12 text-center " style="color:#fff; margin: 5px">最近の落とし物</h3>
         <%= render 'posts/list', posts: @posts %>
      </div>
     </div>
