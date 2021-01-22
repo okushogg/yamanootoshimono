@@ -1,2 +1,5 @@
-<h1>ItemGenre#show</h1>
-<p>Find me in app/views/item_genre/show.html.erb</p>
+
+	<!--Adminだけ編集ボタンを表示-->
+	<% if current_user.admin? %> 
+	  <%#= link_to "編集",  edit_item_genre_path(item_genre.id), class: "btn btn-info" %>
+	<% end %>
