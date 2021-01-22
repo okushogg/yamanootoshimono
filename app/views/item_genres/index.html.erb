@@ -1,15 +1,44 @@
-<h1>アイテムジャンル</h1>
-
-<!--新規アイテムジャンル登録フォーム-->
-<h3>アイテムジャンル新規登録</h3>
-<%= form_with model: @item_genre, url: item_genres_path, local:true do |f| %>
-  <span>アイテムジャンル(名前) <%= f.text_field :name %> </span> 
-  <span>アイテムジャンル(かな) <%= f.text_field :name_kana %> </span>
-  <span><%= f.attachment_field :genre_image %></span>
-  <%= f.radio_button :is_active, true, :checked => true  %>  有効
-  <%= f.radio_button :is_active, false %>  無効
-  <%= f.submit '追加', class:"btn btn-primary" %>
-<% end %>
+<div class="container">
+	<div class="row text-center">
+    <h1>アイテムジャンル</h1>
+   
+    <!--新規アイテムジャンル登録フォーム-->
+    <% if current_user.admin? %> 
+    <div class="col-md-12">
+      <div class="box">   
+        <h3>アイテムジャンル新規登録</h3>
+        <%= form_with model: @item_genre, url: item_genres_path, local:true do |f| %>
+          <span>アイテムジャンル(名前) <%= f.text_field :name %> </span> 
+          <span>アイテムジャンル(かな) <%= f.text_field :name_kana %> </span><br>
+          <span><%= f.attachment_field :genre_image %></span><br>
+          <%= f.radio_button :is_active, true, :checked => true  %> 有効
+          <%= f.radio_button :is_active, false %> 無効
+          <%= f.submit '追加', class:"btn btn-primary" %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+	
+	
+		<div class="col-md-12">
+				<div class="box">
+			  	 
+							<% @item_genres.each do |item_genre| %>
+								<div class="col-md-3 card text-center" style="border-radius: 20px; border:solid 2px #333 ;">
+								<h6 class="card-title" style="font-size: 20px;"><%= item_genre.name %></h6>
+									<%= link_to item_genre_path(item_genre.id) do %>
+										<%= attachment_image_tag item_genre, :genre_image, format: 'png', size:"150x150", fallback: "no_image.png" %>
+									<% end %>
+									<% if current_user.admin? %> 
+									<%= link_to "編集",  edit_item_genre_path(item_genre.id), class: "btn btn-info" %>
+									<% end %>
+								</div>
+							<% end %>
+				</div>
+			</div>
+			
+	</div>
+</div>
 
 <!--アイテムジャンル一覧-->
 <h3>アイテムジャンル一覧</h3>
@@ -35,7 +64,7 @@
           <span class="text-invalid">無効</span>
         <% end %>
         </td>
-        <td class="text-center"><%= link_to "編集",  edit_item_genre_path(item_genre.id), class: "btn btn-success" %></td>
+        <td class="text-center"></td>
     </tr>
     <% end %>
   </tbody>
