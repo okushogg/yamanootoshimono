@@ -1,49 +1,94 @@
-<div class="row mb-12">
-<div class="col-lg-8 offset-lg-2">
+<div class="container">
+    <div class="row text-center">
+      
+    <!--写真表示-->
+    <div class="col-md-12">
+        <div class="box">
+          <h4 style="color: #fff;">写真</h4>
+          <% if @post.post_images.present? %>
+            <% @post.post_images.each do |image| %>
+              <%= attachment_image_tag image, :image, :fill, 200, 200 %>
+            <% end %>
+          <% else %>
+            <%= image_tag 'no_image.png', size: '200x200' %>
+          <% end %>
+        </div>
+    </div>
+    <!--写真表示-->  
+      
+   <!--場所、ジャンル、日時を表示-->
+      <div class="col-md-12">
+          <div class="box">
+            <div class="col-md-3 post-content">
+              場所<br>
+              <div style="font-size: 20px;" ><%= @post.prefecture.prefecture_name %>・<%= @post.place.name %> </div>
+            </div> 
+            
+            <div class="col-md-3 post-content" >
+              アイテムジャンル<br>
+              <div style="font-size: 20px;"> <%= @post.item_genre.name%> </div>
+            </div>
+            
+            <div class="col-md-3 post-content" >
+              見つけた日<br>
+             <div style="font-size: 20px;"> <%= @post.found_day%> </div>
+            </div>
+          </div>
+      </div>
+    <!--場所、ジャンル、日時を表示-->
+    
+    <!--詳細情報を登録-->
+    <div class="col-md-12">
+      <div class="box">
+        <h4 style="color: #fff;">詳細情報</h4>          
+        <div class="col-md-10 post-content" > <%= @post.detail %> </div>
+      </div>
+    </div>
+    <!--詳細情報を表示-->
+    
+    <!--届け先を表示-->
+    <div class="col-md-10"style="margin: 10px auto;">
+      <div class="box">
+        <h4 style="color: #fff;">届け先</h4>
+        <div class="col-md-6 post-content" ><%= @post.strage_place %></h6>
+      </div>
+    </div>
+    <!--届け先を表示-->
+        
+    <!--コメントに関する部分-->
+    <div class="col-md-12">
+      <div class="box">
+        <!--コメント一覧部分-->
+        <h4 style="color: #fff;">コメント一覧</h4>
+        <% @comments.each do |comment|%>
+          <div class="col-md-8 post-content">
+            <div class="text-left"><%= comment.user.name %>  <%= comment.updated_at.to_s(:date_jp)%></div>
+            <div style="font-size: 20px;"> <%= comment.content %> <%= link_to '', post_comment_path(@post.id), method: :delet, class: "fas fa-trash-alt"%> </div> 
+          </div> 
+        <% end %>
+        <!--コメント一覧部分-->
+        
+        <!--コメント投稿部分-->
+        <div class="col-md-8" style="margin: 10px auto;">
+        <%= form_with model:[@post, @comment],  local: true do |f| %>
+        <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" %>  
+        <button class="comment" type="submit"><i class="fas fa-paper-plane"></i></button>
+        <% end %>
+        <!--コメント投稿部分-->
+        </div>
 
-<h4>場所</h4>
-<h4> <%= "#{@post.prefecture.prefecture_name} #{@post.place.name}" %> </h4>
-
-<h4>アイテムジャンル</h4>
-<h4><%= @post.item_genre.name %></h4>
-
-<h4>写真</h4>
-<% if @post.post_images.present? %>
-  <% @post.post_images.each do |image| %>
-    <%= attachment_image_tag image, :image, :fill, 200, 200 %>
-  <% end %>
-<% else %>
-  <%= image_tag 'no_image.png', size: '200x200' %>
-<% end %>
-
-<h4>詳細情報</h4>          
-<%= @post.detail %>
-
-<h4>届け先</h4>
-<h6><%= @post.strage_place %></h6>
-
-
-<!--コメント一覧部分-->
-<br>
-<h5>コメント一覧</h5>
-
-<% @comments.each do |comment|%>
-  <%= comment.user.name %><br>
-  <%= comment.content %>
-  <%= comment.updated_at %>
-  <%= link_to '編集', edit_post_comment_path(@post.id, comment.id), class: "btn btn-primary"%>
-<% end %>
-<!--コメント一覧部分-->
-
-<!--コメント投稿部分-->
-<%= form_with model:[@post, @comment],  local: true do |f| %>
-  <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" , rows: "4" %>
-  <%= f.submit 'コメント投稿', class: "btn btn-primary" %>
-<% end %>
-<!--コメント投稿部分-->
-
+      </div>
+    </div>
+    <!--コメントに関する部分-->
+    
+    <!--戻るボタンや編集ボタンに関する部分-->
+     <div class="col-md-6 post-content">
+       <% if current_user.id == @post.user_id  %>
+         <span style="margin: 10px; "><%= link_to '投稿編集', edit_post_path(@post.id), class:"fas fa-edit"%></span>
+       <% end %>
+        <%= link_to '戻る', :back,  class:"fas fa-undo"%>
+     </div>
+     <!--戻るボタンや編集ボタンに関する部分-->
+     
+  </div>
 </div>
-</div>
-<%= link_to '投稿編集', edit_post_path(@post.id) %>
-<br>
-<%= link_to "投稿一覧へ", posts_path %>

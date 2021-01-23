@@ -2,21 +2,22 @@
 	<div class="row text-center">
     <div class="col-md-6" style="margin: 0px auto;">
       <div class="box">
-        <h1>アイテムジャンル</h1>
+        <h1 style="color: #fff;">アイテムジャンル</h1>
       </div>
     </div>
    
     <!--新規アイテムジャンル登録フォーム-->
     <% if current_user.admin? %> 
-    <div class="col-md-12">
+    <div class="col-md-12" style="color: #fff; ">
       <div class="box">   
         <h3>アイテムジャンル新規登録</h3>
-        <%= form_with model: @item_genre, url: item_genres_path, local:true do |f| %>
+        <%= form_with model: @item_genre, url: item_genres_path, local:true do |f| %><br>
           <span>アイテムジャンル(名前) <%= f.text_field :name %> </span> 
           <span>アイテムジャンル(かな) <%= f.text_field :name_kana %> </span><br>
+          <br>
           <span><%= f.attachment_field :genre_image %></span><br>
           <%= f.radio_button :is_active, true, :checked => true  %> 有効
-          <%= f.radio_button :is_active, false %> 無効
+          <%= f.radio_button :is_active, false %> 無効 <br>
           <%= f.submit '追加', class:"btn btn-primary" %>
         <% end %>
       </div>

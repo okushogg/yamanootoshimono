@@ -1,12 +1,11 @@
 class CommentsController < ApplicationController
   def create
-    @comment = Comment.new(comment_params)
     @post = Post.find(params[:post_id])
-    @comment.post = @post
-    @user_id = current_user.id
-    binding.pry
-    if @comment.save
-      redirect_to 'posts/show'
+    @comment = Comment.new(comment_params)
+    @comment.post_id = @post.id
+    @comment.user_id = current_user.id
+    if @comment.save!
+      redirect_to post_path(@post),flash:{notice:'コメントを追加しました。'}
     else
       @post = Post.find(params[:post_id])
       @comments = Comment.where(params[:id])
@@ -21,7 +20,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to 'post/show'
+      redirect_to 'posts/show'
     else
       @comments = Comment.where(params[:id])
       @post = Post.find(params[:post_id])
@@ -29,8 +28,10 @@ class CommentsController < ApplicationController
     end
   end
   
-  def destory
-    @comment.destory
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to 'posts/show'
   end
   
  
@@ -38,7 +39,7 @@ class CommentsController < ApplicationController
 private
 
   def comment_params
-    params.require(:comment).permit(:content,:post_id,:user_id)
+    params.require(:comment).permit(:content)
   end
   
 
