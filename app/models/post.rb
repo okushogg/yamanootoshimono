@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   belongs_to :place
   belongs_to :item_genre
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :post_images
   
   validates :detail, presence: true, length: { in: 1..500 }

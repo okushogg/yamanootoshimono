@@ -63,14 +63,20 @@
         <% @comments.each do |comment|%>
           <div class="col-md-8 post-content">
             <div class="text-left"><%= comment.user.name %>  <%= comment.updated_at.to_s(:date_jp)%></div>
-            <div style="font-size: 20px;"> <%= comment.content %> <%= link_to '', post_comment_path(@post.id), method: :delet, class: "fas fa-trash-alt"%> </div> 
+            
+              <div style="font-size: 20px;"> <%= comment.content %> 
+                <% if current_user.id == comment.user_id %>
+                  <%= link_to '', post_comment_path(comment.post_id, comment.id), method: :delete, class: "fas fa-trash-alt"%>
+                <% end %>
+              </div> 
+              
           </div> 
         <% end %>
         <!--コメント一覧部分-->
         
         <!--コメント投稿部分-->
         <div class="col-md-8" style="margin: 10px auto;">
-        <%= form_with model:[@post, @comment],  local: true do |f| %>
+          <%= form_with model:[@post, @comment],  local: true do |f| %>
         <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" %>  
         <button class="comment" type="submit"><i class="fas fa-paper-plane"></i></button>
         <% end %>

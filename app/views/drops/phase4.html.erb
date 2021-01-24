@@ -7,7 +7,7 @@
       <%= search_form_for(@q, url:look_for_path) do |f| %>
         <!--詳細に対する部分検索-->
         <%= f.label :detail_cont, "キーワード検索" %>
-        <%= f.search_field :detail_cont, placeholder: "例：赤,モンベル…" %> <br>
+        <%= f.search_field :detail_cont, placeholder: "例：赤,モンベル…", :size => "30*10"%> <br>
         <br>
         <!--期間で検索する-->
         <%= f.label  "期間" %>

@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   
   # 「拾った」に関するルーティング
   get 'pick_up/step1' => 'pick_up#step1', as: 'step1' 
-  get 'pick_up/step2' => 'pick_up#step2', as: 'step2' 
+  get 'pick_up/step2/:id' => 'pick_up#step2', as: 'step2' 
   post 'pick_up/create_place' => 'pick_up#create_place', as: 'step2_create_place'
   get 'pick_up/step3' => 'pick_up#step3', as: 'step3'
   get 'pick_up/step4' => 'pick_up#step4', as: 'step4'
@@ -37,10 +37,20 @@ Rails.application.routes.draw do
   
   # ホームに関するルーティング
   root 'homes#top'
-  get 'homes/about' => 'homes#about', as: 'about'
+  get 'homes/mypage/:id' => 'homes#mypage', as: 'mypage'
   
   # Userのサインアップ、ログイン機能に関するルーティング
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+  
+  
+  get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
+  patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
+  put 'withdraw/:name' => 'users#withdraw'
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

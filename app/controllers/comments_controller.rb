@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      redirect_to 'posts/show'
+      redirect_to 
     else
       @comments = Comment.where(params[:id])
       @post = Post.find(params[:post_id])
@@ -29,9 +29,10 @@ class CommentsController < ApplicationController
   end
   
   def destroy
+    @post = Post.find(params[:post_id])
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to 'posts/show'
+     @comment.destroy
+    redirect_to post_path(@post)
   end
   
  

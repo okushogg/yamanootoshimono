@@ -1,4 +1,5 @@
 class PickUpController < ApplicationController
+  
   def step1
     # session[:id] = params[:prefecture_id]
     @regions1 = Prefecture.where(region: "hokkaido_touhoku")
@@ -11,15 +12,16 @@ class PickUpController < ApplicationController
   end
 
   def step2
-    @prefecture = Prefecture.find(params[:prefecture_id])
+    @prefecture = Prefecture.find(params[:id])
     @places = Place.where(prefecture_id: @prefecture.id)
     @place = Place.new
   end
   
   def create_place
+  @prefecture = Prefecture.find_by(params[:prefecture_id])
   @place = Place.new(place_params)
     if @place.save!
-      redirect_to step1_path,flash:{notice:'新しい山を登録しました。'}
+      redirect_to step2_path(@prefecture.id),flash:{notice:'新しい山を登録しました。'}
     else
       @prefecture = Prefecture.find(params[:prefecture_id])
       @places = Place.where(prefecture_id: @prefecture.id)
@@ -41,7 +43,11 @@ class PickUpController < ApplicationController
   
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    if user_signed_in?
+      @post.user_id = current_user.id
+    else
+      @post.user_id = User.find(9).id
+    end
     if @post.save!
       redirect_to complete_path,flash:{notice:'新規投稿完了しました。'}
     else
