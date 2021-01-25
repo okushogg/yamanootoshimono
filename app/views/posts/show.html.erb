@@ -64,12 +64,18 @@
           <h4 style="color: #fff;">コメント一覧</h4>
           <% @comments.each do |comment|%>
             <div class="col-md-8 post-content">
+              <% if comment.user.present? %>
               <div class="text-left"><%= comment.user.name %>  <%= comment.updated_at.to_s(:date_jp)%></div>
+              <% else %>
+              <div class="text-left"></div>
+              <% end %>
               
-                <div style="font-size: 20px;"> <%= comment.content %> 
+                <div style="font-size: 20px;"> <%= comment.content %>
+                <% if user_signed_in? %>
                   <% if current_user.id == comment.user_id %>
                     <%= link_to '', post_comment_path(comment.post_id, comment.id), method: :delete, class: "fas fa-trash-alt"%>
                   <% end %>
+                <% end %>
                 </div> 
             </div> 
           <% end %>
@@ -79,11 +85,13 @@
         <!--コメント投稿部分-->
         <div class="col-md-8" style="margin: 10px auto;">
           <%= form_with model:[@post, @comment],  local: true do |f| %>
-        <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" %>  
-        <button class="comment" type="submit"><i class="fas fa-paper-plane"></i></button>
-        <% end %>
+          <%= render 'layouts/error_messages', model: f.object %>
+            <%= f.text_area :content, class: "form-control mb-3", placeholder: "コメント" %>  
+            <button class="comment" type="submit"><i class="fas fa-paper-plane"></i></button>
+          <% end %>
+         </div>
         <!--コメント投稿部分-->
-        </div>
+       
 
       </div>
     </div>
@@ -91,11 +99,13 @@
     
     <!--戻るボタンや編集ボタンに関する部分-->
      <div class="col-md-6 post-content">
-       <% if current_user.id == @post.user_id  %>
-         <span style="margin: 10px; "><%= link_to '投稿編集', edit_post_path(@post.id), class:"fas fa-edit"%></span>
+       <% if user_signed_in? %>
+         <% if current_user.id == @post.user_id  %>
+           <span style="margin: 10px; "><%= link_to '投稿編集', edit_post_path(@post.id), class:"fas fa-edit"%></span>
+         <% end %>
+          <%= link_to '戻る', :back,  class:"fas fa-undo"%>
        <% end %>
-        <%= link_to '戻る', :back,  class:"fas fa-undo"%>
-     </div>
+       </div>
      <!--戻るボタンや編集ボタンに関する部分-->
      
   </div>

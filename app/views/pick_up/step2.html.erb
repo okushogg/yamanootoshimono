@@ -16,10 +16,11 @@
     <div class="row text-center">
       <div class="col-md-8" style="margin: 0px auto;">
         <div class="box">
-          <h5>お探しの山がない場合は追加してください</h5>
+          <h5 style="color: #fff;">お探しの山がない場合は追加してください</h5>
           <%= form_with model: @place, url: step2_create_place_path(@prefecture.id), local:true do |f| %>
-            <span>山名</span> <%= f.text_field :name %>
-            <span>かな</span><%= f.text_field :name_kana %>
+          <%= render 'layouts/error_messages', model: f.object %>
+            <span style="color: #fff;">山名</span> <%= f.text_field :name %>
+            <span style="color: #fff;">かな</span><%= f.text_field :name_kana %>
             <%= f.hidden_field :prefecture_id, value: @prefecture.id %>
             <%= f.submit '+', class:"btn-add" %>
           <% end %>

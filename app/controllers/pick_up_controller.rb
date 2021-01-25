@@ -20,10 +20,10 @@ class PickUpController < ApplicationController
   def create_place
   @prefecture = Prefecture.find_by(params[:prefecture_id])
   @place = Place.new(place_params)
-    if @place.save!
-      redirect_to step2_path(@prefecture.id),flash:{notice:'新しい山を登録しました。'}
+    if @place.save
+      redirect_to step2_path(@place.prefecture.id),flash:{notice:'新しい山を登録しました。'}
     else
-      @prefecture = Prefecture.find(params[:prefecture_id])
+      @prefecture = Prefecture.find_by(params[:prefecture_id])
       @places = Place.where(prefecture_id: @prefecture.id)
       render "step2"
     end
@@ -48,11 +48,11 @@ class PickUpController < ApplicationController
     else
       @post.user_id = User.find(9).id
     end
-    if @post.save!
+    if @post.save
       redirect_to complete_path,flash:{notice:'新規投稿完了しました。'}
     else
-      @place = Place.find(params[:place_id])
-      @item_genre = ItemGenre.find(params[:item_genre_id])
+      @place = Place.find_by(params[:place_id])
+      @item_genre = ItemGenre.find_by(params[:item_genre_id])
       render "step4"
     end
   end

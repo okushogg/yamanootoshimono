@@ -6,7 +6,7 @@
       <div class="col-md-12">
       <div class="box">
       <%= form_with model: @post, url: pick_up_create_path, local:true do |f| %>
-      
+      <%= render 'layouts/error_messages', model: f.object %>
       <div class="col-md-3 post-content">
         場所<br>
         <div style="font-size: 20px;" ><%= @place.prefecture.prefecture_name %>・<%= @place.name %> </div>

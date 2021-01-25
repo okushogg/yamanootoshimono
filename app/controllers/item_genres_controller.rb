@@ -1,5 +1,5 @@
 class ItemGenresController < ApplicationController
-  
+before_action :authenticate_user!, only: [:show]
   def index
     @item_genre = ItemGenre.new
     @item_genres = ItemGenre.all
@@ -15,12 +15,13 @@ class ItemGenresController < ApplicationController
     end
   end
   
-  def show
-  end
+  
+  # def show
+  # end
 
-  def edit
-    @item_genre = ItemGenre.find(item_genre.id)
-  end
+  # def edit
+  #   @item_genre = ItemGenre.find(item_genre.id)
+  # end
 
   def update
     @item_genre = ItemGenre.find(params[:id])

@@ -4,7 +4,7 @@
     <div class="col-md-6" style="margin: 0px auto;">
       <div class="box">
         <h1 style="color: #fff;"><%= @prefecture.prefecture_name %></h1>
-        <%= link_to '戻る', :back,  class:"fas fa-undo "%><br>
+        <%= link_to '戻る', :back,  class:"fas fa-undo btn btn-light"%><br>
         <%= image_tag "prefectures/prefecture#{@prefecture.id}.png", :size =>'300x300' %>
       </div>
     </div>
@@ -16,10 +16,11 @@
     <div class="row text-center">
       <div class="col-md-8" style="margin: 0px auto;">
         <div class="box">
-          <h5>お探しの山がない場合は追加してください</h5>
-          <%= form_with model: @place, url: step2_create_place_path(@prefecture.id), local:true do |f| %>
-            <span>山名</span> <%= f.text_field :name %>
-            <span>かな</span><%= f.text_field :name_kana %>
+          <h5 style="color: #fff;">お探しの山がない場合は追加してください</h5>
+          <%= form_with model: @place, url: create_place_prefecture_path(@prefecture.id), local:true do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
+            <span style="color: #fff;">山名</span> <%= f.text_field :name %>
+            <span style="color: #fff;">かな</span><%= f.text_field :name_kana %>
             <%= f.hidden_field :prefecture_id, value: @prefecture.id %>
             <%= f.submit '+', class:"btn-add" %>
           <% end %>
@@ -38,7 +39,11 @@
            <div style="display: inline-block;">
               <div class="btn btn-light">
                 <%= place.name %> 
-                <%= link_to '', destroy_place_prefecture_path(place.id), method: :delete, class: 'fas fa-trash-alt' %>
+                <% if user_signed_in? %>
+                  <% if current_user.admin? %>
+                    <%= link_to '', destroy_place_prefecture_path(place.id), method: :delete, class: 'fas fa-trash-alt' %>
+                  <% end %>
+                <% end %>
               </div>
              <%#= link_to place.name, mountain_path(place, place_id: place.id ), class:"btn btn-light" %>
             </div>
