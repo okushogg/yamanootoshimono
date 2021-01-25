@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   # 山名を追加に関するルーティング
       member do
         post 'create_place'
+        delete 'destroy_place'
       end
   end
   
@@ -46,8 +47,6 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
-  
-  
   get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
   patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
   put 'withdraw/:name' => 'users#withdraw'

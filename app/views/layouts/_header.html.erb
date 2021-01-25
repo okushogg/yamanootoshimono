@@ -22,7 +22,7 @@
            <li class="nav-item"><%= link_to "Posts", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
            <li class="nav-item"><%= link_to "LogOut", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
           <% else %>
-           <li class="nav-item"><%= link_to "都道府県一覧", prefectures_path, method: :delete, class: 'fas fa-mountain nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "都道府県一覧", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
            <li class="nav-item"><%= link_to "アイテム一覧", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
            <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
            <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' %></li>

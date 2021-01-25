@@ -27,6 +27,13 @@ class PrefecturesController < ApplicationController
     end
   end
   
+  def destroy_place
+    @place = Place.find(params[:id])
+    if @place.destroy
+      redirect_to prefecture_path(@place.prefecture.id),flash:{notice:'山を削除しました。'}
+    end
+  end 
+  
   private
   def prefecture_params
     params.require(:prefecture).permit(:prefecture_name, :prefecture_name_kana)
