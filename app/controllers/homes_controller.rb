@@ -6,10 +6,12 @@ class HomesController < ApplicationController
   # ユーザーのマイページを開く
   def mypage
     @user = User.find(params[:id])
+    @posts = Post.where(user_id: params[:id])
   end
   
   def unsubscribe
     @user = User.find_by(name: params[:name])
+    @posts = Post.where(user_id: @user.id)
   end
 
   def withdraw

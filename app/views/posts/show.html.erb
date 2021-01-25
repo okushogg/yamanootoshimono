@@ -55,22 +55,24 @@
     </div>
     <!--届け先を表示-->
         
-    <!--コメントに関する部分-->
+    <!--コメント一覧部分-->
+    
     <div class="col-md-12">
       <div class="box">
         <!--コメント一覧部分-->
-        <h4 style="color: #fff;">コメント一覧</h4>
-        <% @comments.each do |comment|%>
-          <div class="col-md-8 post-content">
-            <div class="text-left"><%= comment.user.name %>  <%= comment.updated_at.to_s(:date_jp)%></div>
-            
-              <div style="font-size: 20px;"> <%= comment.content %> 
-                <% if current_user.id == comment.user_id %>
-                  <%= link_to '', post_comment_path(comment.post_id, comment.id), method: :delete, class: "fas fa-trash-alt"%>
-                <% end %>
-              </div> 
+        <% if @comments.present? %>
+          <h4 style="color: #fff;">コメント一覧</h4>
+          <% @comments.each do |comment|%>
+            <div class="col-md-8 post-content">
+              <div class="text-left"><%= comment.user.name %>  <%= comment.updated_at.to_s(:date_jp)%></div>
               
-          </div> 
+                <div style="font-size: 20px;"> <%= comment.content %> 
+                  <% if current_user.id == comment.user_id %>
+                    <%= link_to '', post_comment_path(comment.post_id, comment.id), method: :delete, class: "fas fa-trash-alt"%>
+                  <% end %>
+                </div> 
+            </div> 
+          <% end %>
         <% end %>
         <!--コメント一覧部分-->
         

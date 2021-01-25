@@ -6,17 +6,17 @@
        </a>
        
          <% if user_signed_in? %>
-          <div class="mx-auto" style="color: #ffffff;">
-           <%= link_to  mypage_path(current_user.id) do %> 
-            <%= "ようこそ #{current_user.name} さん" %>
-           <% end %>
+          <div class="post-content">
+             <%= "ようこそ #{current_user.name} さん" %> 
           </div> 
+          
          <% else %>
           <div class="mx-auto" style="color: #ffffff;"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-light" %></div> 
          <% end %>
          
          <ul class="nav pull-right nav-pills ml-auto mt-2 mt-lg-0">
           <% if user_signed_in? %>
+           <li class="nav-item"><%= link_to "My Page", mypage_path(current_user.id), class: 'fas fa-user nav-link text-light' %></li>
            <li class="nav-item"><%= link_to "Mountains", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
            <li class="nav-item"><%= link_to "Items", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
            <li class="nav-item"><%= link_to "Posts", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>

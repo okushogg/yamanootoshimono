@@ -8,7 +8,7 @@
               <%= attachment_image_tag image, :image, :fill, 150, 150 %>
           <% end %>
           <% else %>
-              <%= image_tag 'no_image.png', size: '200x200' %>
+              <%= image_tag 'no_image.png', size: '150x150' %>
           <% end %>
         </div>
         <br>
@@ -17,6 +17,7 @@
             <p class="card-text"><%= post.prefecture.prefecture_name %></p>
             <p class="card-text"><%= post.item_genre.name %></p>
             <p class="card-text"><%= post.found_day %></p>
+            <p class="card-text"><%= post.comments.count %>件のコメント</p>
           </div>
       <% end %>
   </div>
