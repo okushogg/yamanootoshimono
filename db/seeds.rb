@@ -1,19 +1,13 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 # 管理者情報
-User.create(name: '管理者', email: 'admin@example.com', password:'okugawa', password_confirmation: 'okugawa', admin: true )
+User.create(name: '管理者', email: 'admin@example.com', password: 'okugawa', password_confirmation: 'okugawa', admin: true)
 
 # テストユーザー情報
-User.create(name: 'Tanaka', email: 'tanaka@example.com', password:'okugawa', password_confirmation: 'okugawa', admin: false )
-User.create(name: 'Suzuki', email: 'suzuki@example.com', password:'okugawa', password_confirmation: 'okugawa', admin: false )
-User.create(name: 'Bob', email: 'bob@example.com', password:'okugawa', password_confirmation: 'okugawa', admin: false )
-User.create(name: 'Sam', email: 'sam@example.com', password:'okugawa', password_confirmation: 'okugawa', admin: false )
+User.create(name: 'Tanaka', email: 'tanaka@example.com', password: 'okugawa', password_confirmation: 'okugawa',
+            admin: false)
+User.create(name: 'Suzuki', email: 'suzuki@example.com', password: 'okugawa', password_confirmation: 'okugawa',
+            admin: false)
+User.create(name: 'Bob', email: 'bob@example.com', password: 'okugawa', password_confirmation: 'okugawa', admin: false)
+User.create(name: 'Sam', email: 'sam@example.com', password: 'okugawa', password_confirmation: 'okugawa', admin: false)
 
 # 都道府県情報
 Prefecture.create(prefecture_name: '北海道', prefecture_name_kana: 'ほっかいどう', region: 'hokkaido_touhoku')
@@ -65,13 +59,35 @@ Prefecture.create(prefecture_name: '鹿児島県', prefecture_name_kana: 'かご
 Prefecture.create(prefecture_name: '沖縄県', prefecture_name_kana: 'おきなわけん', region: 'kyushu_okinawa')
 
 # 山の情報
-Place.create(name: '旭岳', name_kana: 'あさひだけ', prefecture_id:'1' )
-Place.create(name: '藻岩山', name_kana: 'もいわやま', prefecture_id:'1' )
-Place.create(name: '羊蹄山', name_kana: 'ようていざん', prefecture_id:'1' )
-Place.create(name: '大山', name_kana: 'だいせん', prefecture_id:'31' )
-Place.create(name: '伊吹山', name_kana: 'いぶきやま', prefecture_id:'25' )
-Place.create(name: '石鎚山', name_kana: 'いしづちさん', prefecture_id:'38' )
-Place.create(name: '霧島山', name_kana: 'きりしまやま', prefecture_id:'46' )
+Place.create(name: '旭岳', name_kana: 'あさひだけ', prefecture_id: '1')
+Place.create(name: '藻岩山', name_kana: 'もいわやま', prefecture_id: '1')
+Place.create(name: '羊蹄山', name_kana: 'ようていざん', prefecture_id: '1')
+Place.create(name: '大山', name_kana: 'だいせん', prefecture_id: '31')
+Place.create(name: '伊吹山', name_kana: 'いぶきやま', prefecture_id: '25')
+Place.create(name: '石鎚山', name_kana: 'いしづちさん', prefecture_id: '38')
+Place.create(name: '霧島山', name_kana: 'きりしまやま', prefecture_id: '46')
 
 # アイテムジャンル
-ItemGenre.create(name: 'test', name_kana: 'test', is_original: true)
+ItemGenre.create(name: 'トップス', name_kana: 'とっぷす', is_original: true)
+ItemGenre.create(name: 'ボトムス', name_kana: 'ぼとむす', is_original: true)
+ItemGenre.create(name: 'アンダーウェア', name_kana: 'あんだーうぇあ', is_original: true)
+ItemGenre.create(name: 'ソックス', name_kana: 'そっくす', is_original: true)
+ItemGenre.create(name: 'グローブ', name_kana: 'ぐろーぶ', is_original: true)
+ItemGenre.create(name: '帽子', name_kana: 'ぼうし', is_original: true)
+ItemGenre.create(name: 'タイツ・サポーター', name_kana: 'たいつ・さぽーたー', is_original: true)
+ItemGenre.create(name: 'フットウェア', name_kana: 'ふっとうぇあ', is_original: true)
+ItemGenre.create(name: 'バッグ', name_kana: 'ばっぐ', is_original: true)
+ItemGenre.create(name: 'ストック', name_kana: 'すとっく', is_original: true)
+ItemGenre.create(name: '冬山ギア', name_kana: 'ふゆやまぎあ', is_original: true)
+ItemGenre.create(name: 'クライミング用品', name_kana: 'くらいみんぐようひん', is_original: true)
+ItemGenre.create(name: 'テント・タープ', name_kana: 'てんと・たーぷ', is_original: true)
+ItemGenre.create(name: 'シュラフ', name_kana: 'しゅらふ', is_original: true)
+ItemGenre.create(name: 'バーナー', name_kana: 'ばーなー', is_original: true)
+ItemGenre.create(name: '調理器具', name_kana: 'ちょうりきぐ', is_original: true)
+ItemGenre.create(name: '燃料', name_kana: 'ねんりょう', is_original: true)
+ItemGenre.create(name: '食品', name_kana: 'しょくひん', is_original: true)
+ItemGenre.create(name: 'ライト', name_kana: 'らいと', is_original: true)
+ItemGenre.create(name: 'アイウェア', name_kana: 'あいうぇあ', is_original: true)
+ItemGenre.create(name: 'ボトル', name_kana: 'ぼとる', is_original: true)
+ItemGenre.create(name: '携帯・財布・鍵', name_kana: 'けいたい・さいふ・かぎ', is_original: true)
+ItemGenre.create(name: 'その他', name_kana: 'そのた', is_original: true)

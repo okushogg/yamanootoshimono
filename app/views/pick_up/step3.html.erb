@@ -17,7 +17,9 @@
 									<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
 									<% if item_genre.is_original? %>
   										<%= link_to step4_path(item_genre_id: item_genre.id, place_id:  @place.id) do %>
-  									    <%= image_tag "item_genres/item_genre#{item_genre.id}.png", :size =>'150x150' %>
+  											<!--アイテムジャンルの画像が用意できるまでNoImageを使う-->
+  									    <%#= image_tag "item_genres/item_genre#{item_genre.id}.png", :size =>'150x150' %>
+  									    <%= image_tag "no_image.png", :size =>'150x150' %>
   									  <% end %>
   								<!--追加されたジャンルの場合はアップされた画像を利用する-->
 									<% else %>

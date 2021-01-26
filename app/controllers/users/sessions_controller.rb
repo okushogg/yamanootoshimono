@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
-
   # 退会したユーザーを弾く
   before_action :reject_inactive_user, only: [:create]
 
@@ -11,19 +10,13 @@ class Users::SessionsController < Devise::SessionsController
     sign_in user
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
-  
-  
-  
+
   # 退会したユーザーを弾く
   def reject_inactive_user
     @user = User.find_by(name: params[:user][:name])
-    if @user
-      if @user.valid_password?(params[:user][:password]) && !@user.is_valid
-        redirect_to new_user_session_path
-      end
-    end
-  end  
-  
+    redirect_to new_user_session_path if @user && @user.valid_password?(params[:user][:password]) && !@user.is_valid
+  end
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in

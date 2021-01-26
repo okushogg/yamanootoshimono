@@ -1,24 +1,29 @@
 ja:
   activerecord:
+    models:
+      place: 場所
+      post: 投稿
+      user: ユーザー
+      item_genre: アイテムジャンル
     attributes:
       place:
         name: 山の名前
         name_kana: 山の名前のふりがな
         place_id: 山の情報
         prefecture_id: 都道府県の情報
-      user:
-        name: ユーザー名
-
-ja:
-  activerecord:
-    attributes:
       post:
         detail: 詳細情報
         found_day: 発見日
         strage_place: 届け先
-
-ja:
-  activerecord:
-    attributes:
+      user:
+        name: ユーザー名
       item_genre:
         name: アイテムジャンルの名前
+  views:
+    pagination:
+      first: <i class="fas fa-angle-double-left"></i>
+      last: <i class="fas fa-angle-double-right"></i>
+      previous: <i class="fas fa-angle-left"></i>
+      next: <i class="fas fa-angle-right"></i>
+      truncate: "..."
+

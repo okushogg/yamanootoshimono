@@ -6,7 +6,9 @@
 			<h6 class="card-title" style="font-size: 20px;"><%= @item_genre.name %></h6>
 				<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
 				<% if @item_genre.is_original? %>
-					<%= image_tag "item_genres/item_genre#{@item_genre.id}.png", :size =>'150x150' %>
+					<!--アイテムジャンルの画像が用意できるまでNoImageを使う-->
+					<%#= image_tag "item_genres/item_genre#{item_genre.id}.png", :size =>'150x150' %>
+  				<%= image_tag "no_image.png", :size =>'150x150' %>
 				<!--追加されたジャンルの場合はアップされた画像を利用する-->
 				<% else %>
 					<%= attachment_image_tag @item_genre, :genre_image, format: 'png', size:"150x150", fallback: "no_image.png" %>

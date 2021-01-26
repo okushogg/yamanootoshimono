@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+// フォームの文字を白くする
 .field {
   margin: 10px;
   color: #fff;
@@ -24,6 +25,7 @@
   font-size: 20px;
 }
 
+// 背景に黒い半透明の枠
 .box{
   background-color:rgba(0, 0, 0, 0.5);
   border-radius: 20px;
@@ -31,6 +33,7 @@
   padding: 10px 5px;
 }
 
+// 黒枠白抜きの丸い枠
 .post-content{
   margin: 10px;
   padding: 10px;
@@ -41,7 +44,7 @@
 }
 
 
-
+// コメント投稿ボタン
 button.comment{
   background-color: #fff;
   border: solid 2px #000;
@@ -49,6 +52,7 @@ button.comment{
   width: 50px;
 }
 
+// 新規投稿ボダン
 .btn-post {
   height: 50px;
   width: 200px;
@@ -58,6 +62,7 @@ button.comment{
   border: 6px groove #000;
 }
 
+// 山名追加ボタン
 .btn-add {
   color: #000;
   background-color: #fff;
@@ -66,6 +71,27 @@ button.comment{
 .btn-add:hover {
   color: #fff;
   background: #66FF99;
+}
+
+// ページネーションの記述
+.pagination>li>a {          
+  border: none;     
+  color: #696969;
+}
+
+
+.pagination>.active>a {     
+  background: #93c9ff;     
+  border-radius: 15px;    
+}
+
+/*ホバー時のデザイン*/
+.pagination>li>a:hover {        
+  border-radius: 15px;    
+}
+
+.pagenation{
+  margin: 10px auto;
 }
 
 
