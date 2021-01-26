@@ -1,5 +1,6 @@
 class ItemGenresController < ApplicationController
-before_action :authenticate_user!, only: [:show]
+before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  
   def index
     @item_genre = ItemGenre.new
     @item_genres = ItemGenre.all
@@ -16,12 +17,14 @@ before_action :authenticate_user!, only: [:show]
   end
   
   
-  # def show
-  # end
+  def show
+    @item_genre = ItemGenre.find(params[:id])
+    @posts = Post.where(item_genre_id: params[:id])
+  end
 
-  # def edit
-  #   @item_genre = ItemGenre.find(item_genre.id)
-  # end
+  def edit
+    @item_genre = ItemGenre.find(params[:id])
+  end
 
   def update
     @item_genre = ItemGenre.find(params[:id])
@@ -34,8 +37,11 @@ before_action :authenticate_user!, only: [:show]
 
   def destroy
     @item_genre = ItemGenre.find(params[:id])
-    @item_genre.destroy
-    redirect_to admin_item_genres_path
+    if @item_genre.destroy
+    redirect_to item_genres_path
+    else
+      render "edit"
+    end
   end
 
   

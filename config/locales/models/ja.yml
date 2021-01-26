@@ -6,10 +6,6 @@ ja:
         name_kana: 山の名前のふりがな
         place_id: 山の情報
         prefecture_id: 都道府県の情報
-
-ja:
-  activerecord:
-    attributes:
       user:
         name: ユーザー名
 

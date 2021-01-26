@@ -11,7 +11,7 @@ class Place < ApplicationRecord
   def unique_place_validate
     place = Place.find_by(prefecture_id: self.prefecture_id, name: self.name)
     if place.present?
-      errors.add(:name)
+      errors.add(:name,'が同じものがすでにあります。')
     end
   end
   

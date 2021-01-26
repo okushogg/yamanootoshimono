@@ -1,7 +1,9 @@
 class PostsController < ApplicationController
   
   def index
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
+    @q = Post.search(params[:q])
+    @result = @q.result
   end
   
   def show

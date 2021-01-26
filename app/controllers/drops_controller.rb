@@ -25,8 +25,6 @@ class DropsController < ApplicationController
     @place = Place.find(params[:place_id])
     @item_genre = ItemGenre.find(params[:item_genre_id])
     @posts = Post.where(place_id: params[:place_id]).where(item_genre_id: params[:item_genre_id])
-    @q = Post.search(params[:q])
-    @result = @q.result
   end
   
   def look_for

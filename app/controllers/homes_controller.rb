@@ -2,7 +2,7 @@ class HomesController < ApplicationController
 before_action :authenticate_user!, only: [:mypage, :unsubscribe, :withdraw]
 
   def top
-    @posts = Post.all
+    @posts = Post.all.order(id: "DESC")
   end
 
   # ユーザーのマイページを開く
