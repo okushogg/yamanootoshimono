@@ -1,0 +1,28 @@
+ja:
+  activerecord:
+    attributes:
+      place:
+        name: 山の名前
+        name_kana: 山の名前のふりがな
+        place_id: 山の情報
+        prefecture_id: 都道府県の情報
+
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ユーザー名
+
+ja:
+  activerecord:
+    attributes:
+      post:
+        detail: 詳細情報
+        found_day: 発見日
+        strage_place: 届け先
+
+ja:
+  activerecord:
+    attributes:
+      item_genre:
+        name: アイテムジャンルの名前
