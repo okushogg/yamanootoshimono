@@ -1,40 +1,57 @@
+<div class="container">
+	<div class="row text-center">
+	
   <!--検索フォーム-->
-    <%= search_form_for(@q, url:look_for_path) do |f| %>
-      <!--詳細に対する部分検索-->
-      <%= f.label :detail_cont, "キーワード検索" %>
-      <%= f.search_field :detail_cont, placeholder: "例：赤,モンベル…" %> <br>
-      <br>
-      <!--期間で検索する-->
-      <%= f.label  "期間" %>
-      <%= f.date_field :found_day_gteq %> ~ <%= f.date_field :found_day_lteq %>
-      
-      <!--すでに絞り込んだ条件（場所、アイテムジャンル）-->
-      <%= f.hidden_field :item_genre_id_eq, value: @item_genre.id %> 
-      <%= f.hidden_field :place_id_eq, value: @place.id %> 
-      <%= f.submit :"検索" %>
-    <% end %>
+  <div class="col-md-12">
+    <div class="box">
+      <%= search_form_for(@q, url:look_for_path) do |f| %>
+        <!--詳細に対する部分検索-->
+        <%= f.label :detail_cont, "キーワード検索" %>
+        <%= f.search_field :detail_cont, placeholder: "例：赤,モンベル…", :size => "30*10"%> <br>
+        <br>
+        <!--期間で検索する-->
+        <%= f.label  "期間" %>
+        <%= f.date_field :found_day_gteq %> ~ <%= f.date_field :found_day_lteq %>
+        
+        <!--すでに絞り込んだ条件（場所、アイテムジャンル）-->
+        <%= f.hidden_field :item_genre_id_eq, value: @item_genre.id %> 
+        <%= f.hidden_field :place_id_eq, value: @place.id %> 
+        <%= f.submit :"検索" %>
+      <% end %>
+    </div>
+  </div>
   <!--検索フォーム-->
 
 <!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
-<table class='table table-hover table-inverse'>
-    <tbody>
-      <% @posts.each do |post| %>
-       <tr>
-          <td>
-            <% if post.post_images.present? %>
-                <% post.post_images.each do |image| %>
-                  <%= attachment_image_tag image, :image, :fill, 50, 50 %>
+<div class="col-md-12">
+      <div class="box">
+        <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <%= link_to post_path(post.id) do %>
+                  <% if post.post_images.present? %>
+                      <% post.post_images.each do |image| %>
+                        <%= attachment_image_tag image, :image, :fill, 150, 150 %>
+                      <% end %>
+                  <% else %>
+                      <%= image_tag 'no_image.png', size: '150x150' %>
+                  <% end %>
                 <% end %>
-            <% else %>
-              <%= image_tag 'no_image.png', size: '50x50' %>
-            <% end %>
-          </td>
-          <td><%= post.found_day %></td>
-          <td><%= post.item_genre.name %></td>
-          <td><%= link_to post.place.name, post_path(post.id) %></td>
-          <td><%= post.prefecture.prefecture_name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-</table>
+              </td>
+              <td><%= post.item_genre.name %></td>
+              <td><%= link_to "#{post.place.name}・#{post.prefecture.prefecture_name}", post_path(post.id) %></td>
+              <td><%= post.found_day %></td>
+              <td>コメント数: <%= post.comments.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
 <!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
+ <div class="col-md-4 post-content pagenation"><%= paginate @posts %></div>
+
+	</div>
+</div>

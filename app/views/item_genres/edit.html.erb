@@ -1,0 +1,44 @@
+ <div class="cotainer">
+  <div class="row text-center">
+     <!--アイテムジャンル表示部分-->
+	 	<div class="col-md-3 card text-center" style="border-radius: 20px; border:solid 2px #333; display: inline-block; margin: 10px auto;">
+			<h6 class="card-title" style="font-size: 20px;"><%= @item_genre.name %></h6>
+				<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
+				<% if @item_genre.is_original? %>
+					<%= image_tag "item_genres/item_genre#{@item_genre.id}.png", :size =>'150x150' %>
+				<!--追加されたジャンルの場合はアップされた画像を利用する-->
+				<% else %>
+					<%= attachment_image_tag @item_genre, :genre_image, format: 'png', size:"150x150", fallback: "no_image.png" %>
+				<% end %>
+				<!--Adminだけ編集ボタンを表示-->
+				<% if current_user.admin? %> 
+				  <%= link_to "削除", item_genre_path(@item_genre.id), method: :delete, class: "btn btn-danger" %>
+				<% end %>
+				<!--Adminだけ編集ボタンを表示-->
+			</div>
+		<!--アイテムジャンル表示部分-->
+     
+    <!--新規アイテムジャンル登録フォーム-->
+    <% if user_signed_in? %>
+      <% if current_user.admin? %> 
+        <div class="col-md-12" style="color: #fff; ">
+          <div class="box">   
+            <h3>アイテムジャンル編集ページ</h3>
+            <%= form_with model: @item_genre, url: item_genres_path, local:true do |f| %><br>
+            <%= render 'layouts/error_messages', model: f.object %>
+              <span>アイテムジャンル(名前) <%= f.text_field :name %> </span> 
+              <span>アイテムジャンル(かな) <%= f.text_field :name_kana %> </span><br>
+              <br>
+              <span><%= f.attachment_field :genre_image %></span><br>
+              <%= f.radio_button :is_active, true, :checked => true  %> 有効
+              <%= f.radio_button :is_active, false %> 無効 <br>
+              <%= f.submit '変更', class:"btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+    <!--新規アイテムジャンル登録フォーム-->
+  
+  </div>
+</div>

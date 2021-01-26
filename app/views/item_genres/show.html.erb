@@ -1,2 +1,58 @@
-<h1>ItemGenre#show</h1>
-<p>Find me in app/views/item_genre/show.html.erb</p>
+<div class="container">
+	<div class="row test-center">
+		
+		<!--アイテムジャンル表示部分-->
+	 	<div class="col-md-3 card text-center" style="border-radius: 20px; border:solid 2px #333; display: inline-block; margin: 10px auto;">
+			<h6 class="card-title" style="font-size: 20px;"><%= @item_genre.name %></h6>
+				<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
+				<% if @item_genre.is_original? %>
+					<!--アイテムジャンルの画像が用意できるまでNoImageを使う-->
+					<%#= image_tag "item_genres/item_genre#{item_genre.id}.png", :size =>'150x150' %>
+  				<%= image_tag "no_image.png", :size =>'150x150' %>
+				<!--追加されたジャンルの場合はアップされた画像を利用する-->
+				<% else %>
+					<%= attachment_image_tag @item_genre, :genre_image, format: 'png', size:"150x150", fallback: "no_image.png" %>
+				
+				<!--Adminだけ編集ボタンを表示-->
+				<% if current_user.admin? %> 
+				  <%= link_to "編集",  edit_item_genre_path(@item_genre.id), class: "btn btn-info" %>
+				<% end %>
+				<!--Adminだけ編集ボタンを表示-->
+				<% end %>
+			</div>
+		<!--アイテムジャンル表示部分-->
+	
+	
+		<!--投稿一覧ページ-->
+    <div class="col-md-12 text-center">
+      <div class="box">
+        <h3 style="color: #fff; margin: 10px auto;"> アイテムジャンル別投稿一覧</h3>
+        <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <%= link_to post_path(post.id) do %>
+                  <% if post.post_images.present? %>
+                      <% post.post_images.each do |image| %>
+                        <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+                      <% end %>
+                  <% else %>
+                      <%= image_tag 'no_image.png', size: '100x100' %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%= post.item_genre.name %></td>
+              <td><%= link_to "#{post.place.name}・#{post.prefecture.prefecture_name}", post_path(post.id) %></td>
+              <td><%= post.found_day %></td>
+              <td>コメント数: <%= post.comments.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <!--投稿一覧ページ-->
+  
+  </div>
+</cdiv>

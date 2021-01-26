@@ -1,0 +1,22 @@
+<div class="cotainer">
+  <div class="row">
+    <div class="col-md-8 box text-center" style="color: #fff; margin: 10px auto;">
+      <h2>本当に退会しますか？</h2>
+      <div>
+      <p>これまでの投稿やコメントが消えてしまいますがよろしいでしょうか？</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-3  text-center post-content" style="margin: 10px auto;">
+        <span style="margin: 10px;"><%= link_to "退会する", withdraw_user_path(@user), method: :patch, class:"fas fa-user-minus" %></span>
+        <%= link_to '戻る', :back,  class:"fas fa-undo"%>
+    </div>
+  </div>
+  
+  <div class="row box" style="margin-top:20px; margin-right: auto; margin-left: auto;">
+       <h3 class="col-md-12 text-center " style="color:#fff; margin: 5px">見つけてもらった迷子たち</h3>
+        <%= render 'posts/list', posts: @posts %>
+  </div>
+  
+</div>

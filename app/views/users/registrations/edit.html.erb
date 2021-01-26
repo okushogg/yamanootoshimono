@@ -1,0 +1,58 @@
+<div class="cotainer">
+    <div class="row text-center">
+    <div class="col-md-10 box" style="margin: 10px auto;">
+      <h2 style="color: #fff;" >ユーザー情報の変更 </h2>
+      
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <%= render "users/shared/error_messages", resource: resource %>
+          
+          <div class="field">
+            <%= f.label :'名前' %><br />
+            <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+          </div>
+          
+          
+          <div class="field">
+            <%= f.label :'メールアドレス' %><br />
+            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          </div>
+          
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+          <% end %>
+          
+          
+          
+          <div class="field">
+            <%= f.label :'パスワード'%> <i>(変更しない場合は空欄で結構です。)</i><br />
+            <%= f.password_field :password, autocomplete: "新しいパスワード" %>
+            <% if @minimum_password_length %>
+              <br />
+              <em><%= @minimum_password_length %>文字以上でお願いします。</em>
+            <% end %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :'新しいパスワードをもう一度ご入力ください。' %><br />
+            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+          </div>
+          
+          <div class="field">
+            <%= f.label :'変更前のパスワード' %> <i>(ご本人様確認のため)</i><br />
+            <%= f.password_field :current_password, autocomplete: "current-password" %>
+          </div>
+          
+          <div class="actions">
+            <%= f.submit "ユーザー情報更新", class:"btn btn-primary btn-lg" %>
+          </div>
+      <% end %>
+      
+        <div class="col-md-3 text-center post-content" style="margin: 10px auto;">
+          <span style="margin: 10px 20px;"><%= link_to '退会', confirm_unsubscribe_path(current_user.name), class:"fas fa-user-minus" %></span>
+          <%= link_to '戻る', :back,  class:"fas fa-undo"%>
+          <%#= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %>
+        </div>
+      
+    </div>
+  </div>
+</div>

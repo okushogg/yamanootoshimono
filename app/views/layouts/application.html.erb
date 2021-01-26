@@ -10,7 +10,8 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
-    <!--Noticeを表示するための記述-->
+  
+  <!--Noticeを表示するための記述-->
   <% if notice.present? %>
     <h3 class="alert alert-success"><%= flash[:notice] %></h3>
   <% end %>
@@ -18,10 +19,12 @@
   <% if alert.present? %>
     <h3 class="alert alert-danger"><%= flash[:alert] %></h3>
   <% end %>
-   <!--Noticeを表示するための記述-->
+  <!--Noticeを表示するための記述-->
   <body>
+  
   <%= render 'layouts/header' %>
   
     <%= yield %>
+  
   </body>
 </html>

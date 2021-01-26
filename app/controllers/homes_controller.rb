@@ -1,7 +1,25 @@
 class HomesController < ApplicationController
+  before_action :authenticate_user!, only: %i[mypage unsubscribe withdraw]
+
   def top
+    @posts = Post.all
   end
 
-  def about
+  # ユーザーのマイページを開く
+  def mypage
+    @user = User.find(params[:id])
+    @posts = Post.where(user_id: params[:id])
+  end
+
+  def unsubscribe
+    @user = User.find_by(name: params[:name])
+    @posts = Post.where(user_id: @user.id)
+  end
+
+  def withdraw
+    @user = User.find_by(name: params[:name])
+    @user.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
   end
 end

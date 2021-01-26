@@ -1,23 +1,56 @@
-<h2>投稿ページ</h2>
-<div class="col-lg-12">
-<%= form_with model: @post, url: post_path, local:true do |f| %>
-<h3>都道府県・山名</h3> 
-<%= @post.prefecture.prefecture_name %>・<%= @post.place.name %>
-<%= f.hidden_field :prefecture_id, value: @post.prefecture.id %>
-<%= f.hidden_field :place_id, value: @post.place.id %>
-<h3>アイテムジャンル</h3>
-<%= @post.item_genre.name%>
-<%= f.hidden_field :item_genre_id, value: @post.item_genre.id %>
-<h3>日時</h3>
-<%= f.date_field :found_day %> 
-<h3>写真</h3>
-<%= f.attachment_field :post_images_images, multiple: true %>
-<h3>詳細情報</h3>
-<%= f.text_field :detail,  class: "form-control mb-2", placeholder: "拾った物や場所の詳細について教えて下さい。" , rows: "4" %>
-<h3>届け先</h3>
-<%= f.text_field :strage_place, class: "form-control mb-1", placeholder: "例：xxx小屋,〇〇の交番" %>  
+<div class="container">
+  <div class="row text-center">
+    <div class="col-md-6" style="font-size: 30px; color: #fff; margin: 0 auto;">
+      <div class="box text-center">編集フォーム </div> 
+    </div>
+      <div class="col-md-12">
+      <div class="box">
+      <%= form_with model: @post, url: pick_up_create_path, local:true do |f| %>
+      
+      <div class="col-md-3 post-content">
+        場所<br>
+        <div style="font-size: 20px;" ><%= @post.prefecture.prefecture_name %>・<%= @post.place.name %> </div>
+        
+      </div> 
+      
+      <div class="col-md-3 post-content" >
+        アイテムジャンル<br>
+        <div style="font-size: 20px;"> <%= @post.item_genre.name%> </div>
+        
+      </div>
+      
+      <div class="col-md-3 post-content" >
+        日時<br>
+        <%= f.date_field :found_day %> 
+      </div>
+      
+      <div class="col-md-10 post-content" >
+      <div style="font-size: 20px;"> 写真</div> <br>
+      <%= f.attachment_field :post_images_images, multiple: true %>
+      </div>
+      
+      <div class="col-md-10 post-content"  >
+      <div style="font-size: 20px;">詳細情報</div> <br>
+      <%= f.text_area :detail,  class: "form-control mb-1", rows: "4" %>
+      </div>
+      
+      <div class="col-md-5 post-content" >
+      <div style="font-size: 20px;">届け先</div>
+      <%= f.text_field :strage_place, class: "form-control mb-1" %>  
+      </div>
+      
+      <br>
+      <%= f.submit '変更', class:"btn-post" %>
+      <% end %>
+      
+     <div class="col-md-6 post-content">
+     <% if current_user.id == @post.user_id  %>
+       <%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger fas fa-trash"%>
+     <% end %>
+      <%= link_to '戻る', :back,  class:"fas fa-undo"%>
+     </div>
+      
+      
+  </div>
+</div>
 
-<%= f.submit '変更', class:"btn btn-primary" %>
-<% end %>
-
-<%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn-sm btn-danger"%>

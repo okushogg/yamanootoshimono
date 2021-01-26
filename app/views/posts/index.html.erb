@@ -1,19 +1,39 @@
-<table class='table table-hover table-inverse'>
-    <tbody>
-      <% @posts.each do |post| %>
-        <tr>
-          <td>
-            <% if post.post_images.present? %>
-            <% post.post_images.each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 50, 50 %>
-            <% end %>
-            <% else %>
-              <%= image_tag 'no_image.png', size: '50x50' %>
-            <% end %>
-          </td>
-          <td><%= link_to post.place.name, post_path(post.id) %></td>
-          <td><%= post.prefecture.prefecture_name %></td>
-        </tr>
-      <% end %>
-    </tbody>
-</table>
+<div class="container">
+  <div class="row text-center">
+    
+    <!--投稿一覧ページ-->
+    <div class="col-md-12">
+      <div class="box">
+        <h3 style="color: #fff;"> 投稿一覧ページ</h3>
+        <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <%= link_to post_path(post.id) do %>
+                  <% if post.post_images.present? %>
+                      <% post.post_images.each do |image| %>
+                        <%= attachment_image_tag image, :image, :fill, 100, 100 %>
+                      <% end %>
+                  <% else %>
+                      <%= image_tag 'no_image.png', size: '100x100' %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td><%= post.item_genre.name %></td>
+              <td><%= link_to "#{post.place.name}・#{post.prefecture.prefecture_name}", post_path(post.id) %></td>
+              <td><%= post.found_day %></td>
+              <td>コメント数: <%= post.comments.count %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+      </div>
+    </div>
+    <!--投稿一覧ページ-->
+    
+    <div class="col-md-4 post-content pagenation"><%= paginate @posts %></div>
+    
+  </div>
+</div>

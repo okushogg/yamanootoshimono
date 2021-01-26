@@ -1,21 +1,33 @@
-<% if user_signed_in? %>
-<li>
-<%= link_to "Top", root_path %>
-</li>
-<li>
-<%= link_to "都道府県", prefectures_path %>
-</li>
-<li>
-<%= link_to "アイテムジャンル一覧", item_genres_path %>
-</li>
-<li>
-<%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-</li>
-<% else %>
-<li>
-<%= link_to "新規登録", new_user_registration_path %>
-</li>
-<li>
-<%= link_to "ログイン", new_user_session_path %>
-</li>
-<% end %>
+<header>
+    <nav class="navbar navbar-light" style="background-color: rgba(0, 0, 0, 0.5);">
+
+       <a class="navbar-brand" style="color: #ffffff; font-family:"游ゴシック","arial unicode ms",sans-serif; font-size: 25px;" href="/">
+           山の落とし物
+       </a>
+       
+         <% if user_signed_in? %>
+          <div class="post-content">
+             <%= "ようこそ #{current_user.name} さん" %> 
+          </div> 
+          
+         <% else %>
+          <div class="mx-auto" style="color: #ffffff;"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-light" %></div> 
+         <% end %>
+         
+         <ul class="nav pull-right nav-pills ml-auto mt-2 mt-lg-0">
+          <% if user_signed_in? %>
+           <li class="nav-item"><%= link_to "My Page", mypage_path(current_user.id), class: 'fas fa-user nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "Mountains", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "Items", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "Posts", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "LogOut", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+          <% else %>
+           <li class="nav-item"><%= link_to "都道府県一覧", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "アイテム一覧", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' %></li>
+           <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+          <% end %>
+         </ul>
+    </nav>
+</header>
