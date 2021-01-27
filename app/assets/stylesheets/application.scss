@@ -85,7 +85,7 @@ button.comment{
   border-radius: 15px;    
 }
 
-/*ホバー時のデザイン*/
+
 .pagination>li>a:hover {        
   border-radius: 15px;    
 }
@@ -93,6 +93,20 @@ button.comment{
 .pagenation{
   margin: 10px auto;
 }
+
+.pagenation {
+    text-align:center;
+}
+.pagenation ul {
+    display:inline-block;
+}
+.pagenation li {
+    float:left;
+}
+.pagenation li + li {
+    margin-left:20px;
+}
+
 
 
 @import "bootstrap";
