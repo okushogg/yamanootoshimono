@@ -3,7 +3,8 @@
 	
   <!--検索フォーム-->
   <div class="col-md-12">
-    <div class="box">
+    <div class="box" style="color: #fff; font-size: 20px;">
+      <h3 style="color: #fff; margin: 10px auto;">絞り込み検索</h3>
       <%= search_form_for(@q, url:look_for_path) do |f| %>
         <!--詳細に対する部分検索-->
         <%= f.label :detail_cont, "キーワード検索" %>
@@ -16,7 +17,7 @@
         <!--すでに絞り込んだ条件（場所、アイテムジャンル）-->
         <%= f.hidden_field :item_genre_id_eq, value: @item_genre.id %> 
         <%= f.hidden_field :place_id_eq, value: @place.id %> 
-        <%= f.submit :"検索" %>
+        <%= f.submit :"検索", class:"btn btn-info btn-lg" %>
       <% end %>
     </div>
   </div>
@@ -25,6 +26,8 @@
 <!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
 <div class="col-md-12">
       <div class="box">
+        <h3 style="color: #fff; margin: 10px auto;"> <%= "『#{@place.prefecture.prefecture_name}・#{@place.name}・#{@item_genre.name}』 検索結果"   %></h3>
+        <%= link_to '戻る', :back,  class:"fas fa-undo btn btn-light"%>
         <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
         <tbody>
           <% @posts.each do |post| %>
@@ -51,7 +54,7 @@
       </div>
     </div>
 <!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
- <div class="col-md-4 post-content pagenation"><%= paginate @posts %></div>
+ <div class="col-md-4 pagenation"><%= paginate @posts %></div>
 
 	</div>
 </div>

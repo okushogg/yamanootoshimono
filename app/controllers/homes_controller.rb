@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
-  before_action :authenticate_user!, only: %i[mypage unsubscribe withdraw]
+  before_action :authenticate_user!, only: %i(mypage unsubscribe withdraw)
 
   def top
     @posts = Post.all

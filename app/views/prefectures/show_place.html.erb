@@ -4,7 +4,7 @@
     <!--投稿一覧ページ-->
     <div class="col-md-12">
       <div class="box">
-        <h3 style="color: #fff;"> 投稿一覧ページ</h3>
+        <h3 style="color: #fff;"> <%= "#{@place.name} 落とし物一覧"%></h3>
         <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
         <tbody>
           <% @posts.each do |post| %>

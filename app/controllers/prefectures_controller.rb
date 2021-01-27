@@ -33,6 +33,11 @@ class PrefecturesController < ApplicationController
     redirect_to prefecture_path(@place.prefecture.id), flash: { notice: '山を削除しました。' } if @place.destroy
   end
 
+  def show_place
+    @place = Place.find(params[:id])
+    @posts = Post.where(place_id: params[:id]).order(id: 'DESC').page(params[:page]).per(10)
+  end
+
   private
 
   def prefecture_params
