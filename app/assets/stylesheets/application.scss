@@ -13,6 +13,16 @@
  *= require_tree .
  *= require_self
  */
+// 背景表示
+.jumbotron-extend {
+    position: relative;
+    height: 100vh;
+    min-height: 300px;
+    background: url(forest.jpg) no-repeat center center;
+    background-size: cover;
+}
+ 
+ 
 // フォームの文字を白くする
 .field {
   margin: 10px;

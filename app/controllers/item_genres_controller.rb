@@ -1,5 +1,5 @@
 class ItemGenresController < ApplicationController
-  before_action :authenticate_user!, only: %i[edit update destroy]
+  before_action :authenticate_user!, only: %i(edit update destroy)
 
   def index
     @item_genre = ItemGenre.new
