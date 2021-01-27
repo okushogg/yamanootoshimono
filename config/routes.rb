@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :prefectures, only: %i[show index] do
     # 山名を追加に関するルーティング
     member do
+      get 'show_place'
       post 'create_place'
       delete 'destroy_place'
     end

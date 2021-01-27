@@ -37,15 +37,12 @@
         <div class="box">
           <% @places.each_with_index do |place, i| %>
            <div style="display: inline-block;">
-              <div class="btn btn-light">
-                <%= place.name %> 
+                <%= link_to place.name, show_place_prefecture_path(place.id), class:"btn btn-light" %> 
                 <% if user_signed_in? %>
                   <% if current_user.admin? %>
                     <%= link_to '', destroy_place_prefecture_path(place.id), method: :delete, class: 'fas fa-trash-alt' %>
                   <% end %>
                 <% end %>
-              </div>
-             <%#= link_to place.name, mountain_path(place, place_id: place.id ), class:"btn btn-light" %>
             </div>
             <!--５つごとに列を改行する-->
            <% if (i+1)%5 == 0 %> <br> <br> <% end %>
