@@ -75,3 +75,7 @@ gem 'refile-mini_magick'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'rubocop-airbnb'
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
