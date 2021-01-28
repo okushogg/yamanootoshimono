@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     # 山名を追加に関するルーティング
     member do
       get 'show_place'
+      get 'create_place' => 'prefectures#fake'
       post 'create_place'
       delete 'destroy_place'
     end
@@ -21,6 +22,7 @@ Rails.application.routes.draw do
   get 'pick_up/step1' => 'pick_up#step1', as: 'step1'
   get 'pick_up/step2/:id' => 'pick_up#step2', as: 'step2'
   post 'pick_up/create_place' => 'pick_up#create_place', as: 'step2_create_place'
+  get 'pick_up/create_place' => 'pick_up#fake' 
   get 'pick_up/step3' => 'pick_up#step3', as: 'step3'
   get 'pick_up/step4' => 'pick_up#step4', as: 'step4'
   get 'pick_up/confirm' => 'pick_up#confirm', as: 'confirm'

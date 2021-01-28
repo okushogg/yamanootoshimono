@@ -36,6 +36,7 @@
  <div class="col-md-4 pagenation"><%= paginate @result %></div>
 <% else %>
   <h3 style="color: #fff; margin: 10px auto;">該当する投稿はありませんでした。</h3>
+  <%= link_to '戻る', :back,  class:"fas fa-undo btn btn-light"%>
 <% end %>
 	</div>
 </div>

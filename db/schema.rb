@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_002108) do
     t.string "prefecture_name", null: false
     t.string "prefecture_name_kana", null: false
     t.string "region", null: false
+    t.integer "picture"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prefecture_name", "prefecture_name_kana"], name: "index_prefectures_on_prefecture_name_and_prefecture_name_kana"
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 2021_01_18_002108) do
     t.datetime "remember_created_at"
     t.boolean "admin", default: false, null: false
     t.boolean "is_deleted", default: false, null: false
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -27,6 +27,10 @@ class PrefecturesController < ApplicationController
       render 'prefectures/show'
     end
   end
+  
+  def fake
+    redirect_to prefecture_path(params[:id])
+  end
 
   def destroy_place
     @place = Place.find(params[:id])

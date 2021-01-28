@@ -45,7 +45,7 @@ class PickUpController < ApplicationController
     @post.user_id = if user_signed_in?
                       current_user.id
                     else
-                      User.find(9).id
+                      User.find_by(name: 'ゲスト').id
                     end
     if @post.save
       redirect_to complete_path, flash: { notice: '新規投稿完了しました。' }
@@ -56,7 +56,9 @@ class PickUpController < ApplicationController
     end
   end
 
-  def complete; end
+  def fake
+    redirect_to step1_path,flash: { notice: 'もう一度都道府県を選んでください。' }
+  end
 
   private
 
