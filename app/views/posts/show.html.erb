@@ -72,7 +72,7 @@
               
                 <div style="font-size: 20px;"> <%= comment.content %>
                 <% if user_signed_in? %>
-                  <% if current_user.id == comment.user_id %>
+                  <% if current_user.id == comment.user_id || current_user.admin? %>
                     <%= link_to '', post_comment_path(comment.post_id, comment.id), method: :delete, class: "fas fa-trash-alt"%>
                   <% end %>
                 <% end %>
@@ -100,7 +100,7 @@
     <!--戻るボタンや編集ボタンに関する部分-->
      <div class="col-md-6 post-content">
        <% if user_signed_in? %>
-         <% if current_user.id == @post.user_id  %>
+         <% if current_user.id == @post.user_id || current_user.admin?  %>
            <span style="margin: 10px; "><%= link_to '投稿編集', edit_post_path(@post.id), class:"fas fa-edit"%></span>
          <% end %>
           <%= link_to '戻る', :back,  class:"fas fa-undo"%>
