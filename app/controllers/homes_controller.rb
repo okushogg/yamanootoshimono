@@ -10,6 +10,11 @@ class HomesController < ApplicationController
     @user = User.find(params[:id])
     @posts = Post.where(user_id: params[:id])
   end
+  
+  def adminpage
+    @users = User.all.order(id: 'DESC').page(params[:page]).per(10)
+    @delete_users = User.where(is_deleted: true).order(id: 'DESC').page(params[:page]).per(10)
+  end
 
   def unsubscribe
     @user = User.find_by(name: params[:name])

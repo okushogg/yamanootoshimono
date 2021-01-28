@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row text-center">
+    <!--投稿一覧ページ-->
+    <div class="col-md-12">
+      <div class="box">
+        <h3 style="color: #fff;"> ユーザー情報一覧ページ</h3>
+        <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= user.id %></td>
+              <td><%= link_to user.name, mypage_path(user.id)  %></td>
+              <td><%= user.created_at.to_s(:date_jp) %></td>
+              <td>投稿数: <%= user.posts.count %></td>
+              <td>
+                <% if user.is_deleted? %>
+                  退会済み
+                <% else %>
+                  有効
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <!--投稿一覧ページ-->
+    <div class="col-md-4 pagenation"><%= paginate @users %></div>
+  </div>
+</div>

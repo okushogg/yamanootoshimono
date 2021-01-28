@@ -4,6 +4,7 @@ class CreatePrefectures < ActiveRecord::Migration[5.2]
       t.string 'prefecture_name', null: false
       t.string 'prefecture_name_kana', null: false
       t.string 'region', null: false
+      t.integer 'picture', nill:false
       t.timestamps
     end
     add_index :prefectures, %i[prefecture_name prefecture_name_kana]

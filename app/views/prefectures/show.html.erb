@@ -40,7 +40,7 @@
                 <%= link_to place.name, show_place_prefecture_path(place.id), class:"btn btn-light" %> 
                 <% if user_signed_in? %>
                   <% if current_user.admin? %>
-                    <%= link_to '', destroy_place_prefecture_path(place.id), method: :delete, class: 'fas fa-trash-alt' %>
+                    <%= link_to '', destroy_place_prefecture_path(place.id), method: :delete, class: 'fas fa-trash-alt',data: { confirm: '削除しますか？' } %>
                   <% end %>
                 <% end %>
             </div>

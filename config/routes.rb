@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   # ホームに関するルーティング
   root 'homes#top'
   get 'homes/mypage/:id' => 'homes#mypage', as: 'mypage'
+  get 'homes/adminpage' => 'homes#adminpage', as: 'adminpage'
 
   # Userのサインアップ、ログイン機能に関するルーティング
   devise_for :users, controllers: {
@@ -46,6 +47,7 @@ Rails.application.routes.draw do
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
+  
   get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
   patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
   put 'withdraw/:name' => 'users#withdraw'
