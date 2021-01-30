@@ -44,7 +44,7 @@
       <% end %>
       
      <div class="col-md-6 post-content">
-     <% if current_user.id == @post.user_id  %>
+     <% if current_user.id == @post.user_id || current_user.admin?  %>
        <%= link_to '削除', post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-danger fas fa-trash"%>
      <% end %>
       <%= link_to '戻る', :back,  class:"fas fa-undo"%>
