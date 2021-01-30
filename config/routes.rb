@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get 'pick_up/confirm' => 'pick_up#confirm', as: 'confirm'
   get 'pick_up/complete' => 'pick_up#complete', as: 'complete'
   post 'pick_up/create' => 'pick_up#create', as: 'pick_up_create'
+  patch 'pick_up_create' => 'pick_up#update' 
+  
 
   # 「落とした」に関するルーティング
   get 'drops/phase1' => 'drops#phase1', as: 'phase1'

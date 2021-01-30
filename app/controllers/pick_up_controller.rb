@@ -55,7 +55,7 @@ class PickUpController < ApplicationController
       render 'step4'
     end
   end
-
+  
   def fake
     redirect_to step1_path,flash: { notice: 'もう一度都道府県を選んでください。' }
   end
