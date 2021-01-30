@@ -5,7 +5,7 @@
     </div>
       <div class="col-md-12">
       <div class="box">
-      <%= form_with model: @post, url: pick_up_create_path, local:true do |f| %>
+      <%= form_with model: @post, url: post_path(@post.id), local:true do |f| %>
       
       <div class="col-md-3 post-content">
         場所<br>
@@ -40,7 +40,7 @@
       </div>
       
       <br>
-      <%= f.submit '変更', class:"btn-post" %>
+        <%= f.submit '変更', class:"btn-post" %>
       <% end %>
       
      <div class="col-md-6 post-content">
