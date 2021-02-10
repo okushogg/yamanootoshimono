@@ -1,9 +1,10 @@
 FactoryBot.define do
 
   factory :place do
+    association :prefecture
+    id { "1" }
     name  {"テスト山"}
     name_kana {"てすとやま"}
-    prefecture_id {"1"}
   end
 
 end
