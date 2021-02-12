@@ -8,20 +8,16 @@ crumb :step1 do
 end
 
 crumb :step2 do
-  @prefecture = Prefecture.find_by(params[:prefecture_id])
-  link "場所を選択", step2_path(@prefecture.id)
+  link "場所を選択", step2_path(session[:prefecture_id])
   parent :step1
 end
 
 crumb :step3 do
-  @place = Place.find(params[:place_id])
-  link "道具の種類を選択", step3_path(@place.id)
+  link "道具の種類を選択", step3_path(session[:place_id])
   parent :step2
 end
 
 crumb :step4 do
-  @place = Place.find(params[:place_id])
-  @item_genre = ItemGenre.find(params[:item_genre_id])
-  link "詳細を入力", step4_path(@place.id, @item_genre.id)
+  link "詳細を入力", step4_path(session[:item_genre_id])
   parent :step3
 end

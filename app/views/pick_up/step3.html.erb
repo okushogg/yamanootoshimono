@@ -22,7 +22,7 @@
 								<h6 class="card-title" style="font-size: 20px;"><%= item_genre.name %></h6>
 									<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
 									<% if item_genre.is_original? %>
-  										<%= link_to step4_path(item_genre_id: item_genre.id, place_id:  @place.id) do %>
+  										<%= link_to step4_path(item_genre.id) do %>
   											<!--アイテムジャンルの画像が用意できるまでNoImageを使う-->
   									    <%#= image_tag "item_genres/item_genre#{item_genre.id}.png", :size =>'150x150' %>
   									    <%= image_tag "no_image.png", :size =>'150x150' %>

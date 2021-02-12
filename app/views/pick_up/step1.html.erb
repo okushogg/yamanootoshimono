@@ -15,7 +15,7 @@
             <tr style="margin:5px">
               <td>
                 <% @regions1.each do |region1| %>
-                <%= link_to region1.prefecture_name, step2_path(region1, prefecture_id: region1.id), class: "btn btn-light" %>
+                <%= link_to region1.prefecture_name, step2_path(region1.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
