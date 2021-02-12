@@ -45,7 +45,7 @@ class PickUpController < ApplicationController
     @post.user_id = if user_signed_in?
                       current_user.id
                     else
-                      User.find_by(name: 'sam').id
+                      User.find_by(name: 'Seedam').id
                     end
     if @post.save
       redirect_to complete_path, flash: { notice: '新規投稿完了しました。' }

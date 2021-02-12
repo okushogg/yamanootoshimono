@@ -72,7 +72,7 @@ gem 'ransack'
 gem 'refile', require: 'refile/rails', github: 'manfe/refile'
 gem 'refile-mini_magick'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
-
+gem "gretel"
 gem 'rubocop-airbnb'
 gem 'dotenv-rails'
 group :production do

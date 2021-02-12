@@ -1,3 +1,23 @@
 // Place all the styles related to the pick_up controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.logo {
+  color: #fff;
+  margin-left: 3vw;
+}
+
+.logo a {
+  color: #fff;
+  margin-right: 0.5vw;
+}
+
+.current {
+  color: #fff;
+  font-weight: bold;
+  margin-right: 1vw;
+}
+
+.logo:hover,.logo a:hover {
+  color: #0ff;
+}
