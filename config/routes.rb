@@ -33,9 +33,9 @@ Rails.application.routes.draw do
 
   # 「落とした」に関するルーティング
   get 'drops/phase1' => 'drops#phase1', as: 'phase1'
-  get 'drops/phase2' => 'drops#phase2', as: 'phase2'
-  get 'drops/phase3' => 'drops#phase3', as: 'phase3'
-  get 'drops/phase4' => 'drops#phase4', as: 'phase4'
+  get 'drops/phase2/:id' => 'drops#phase2', as: 'phase2'
+  get 'drops/phase3/:id' => 'drops#phase3', as: 'phase3'
+  get 'drops/phase4/:id' => 'drops#phase4', as: 'phase4'
   get 'drops/result' => 'drops#result', as: 'result'
   get 'drops/look_for' => 'drops#look_for', as: 'look_for'
 
