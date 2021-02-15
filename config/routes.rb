@@ -38,7 +38,8 @@ Rails.application.routes.draw do
   get 'drops/phase4/:id' => 'drops#phase4', as: 'phase4'
   get 'drops/result' => 'drops#result', as: 'result'
   get 'drops/look_for' => 'drops#look_for', as: 'look_for'
-
+  post 'drops/create_order' => 'drops#create_order', as: 'create_order'
+  
   # ホームに関するルーティング
   root 'homes#top'
   get 'homes/mypage/:id' => 'homes#mypage', as: 'mypage'

@@ -3,7 +3,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
     create_table :orders do |t|
       t.integer :user_id, null: false
       t.integer :place_id
-      t.integer :item_genre
+      t.integer :item_genre_id
       t.string :title
       t.string  :content
       t.timestamps
