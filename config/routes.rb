@@ -53,9 +53,14 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
   
+  # Userの退会に関するルーティング
   get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
   patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
   put 'withdraw/:name' => 'users#withdraw'
+  
+  # 通知に関するルーティング
+  resources :notifications, only: :index
+  
   
   # 例外処理
   # get '*not_found', controller: 'application', action: 'render_404'

@@ -6,10 +6,14 @@
        </a>
        
          <% if user_signed_in? %>
+         <!--通知の有無を知らせる。-->
+          <% if unchecked_notifications.any? %>
+           <i class="fa fa-circle" style="color: gold;"></i>
+          <% end %>
+         <!--通知の有無を知らせる。-->
           <div class="post-content">
-             <%= "ようこそ #{current_user.name} さん" %> 
+             <%= link_to "ようこそ #{current_user.name} さん", notifications_path %> 
           </div> 
-          
          <% else %>
           <div class="mx-auto" style="color: #ffffff;"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-light" %></div> 
          <% end %>
