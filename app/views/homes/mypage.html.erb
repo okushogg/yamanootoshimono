@@ -22,6 +22,11 @@
               <td><%= order.place.name %></td>
               <td><%= order.title %></td>
               <td><%= order.content %></td>
+              <td>
+                <%= link_to destroy_order_path(order_id: order.id), method: :delete do %>
+                  <i class="fas fa-trash" style="color: black;"></i>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>

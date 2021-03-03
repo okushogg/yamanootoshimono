@@ -12,6 +12,12 @@ class HomesController < ApplicationController
     @orders = Order.where(user_id: params[:id])
   end
   
+  def destroy_order
+    @order = Order.find_by(params[order_id: :order_id])
+    @order.destroy
+    redirect_to mypage_path(current_user.id)
+  end
+  
   def adminpage
     @users = User.all.order(id: 'DESC').page(params[:page]).per(10)
     @delete_users = User.where(is_deleted: true).order(id: 'DESC').page(params[:page]).per(10)

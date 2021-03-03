@@ -38,12 +38,16 @@ Rails.application.routes.draw do
   get 'drops/phase4/:id' => 'drops#phase4', as: 'phase4'
   get 'drops/result' => 'drops#result', as: 'result'
   get 'drops/look_for' => 'drops#look_for', as: 'look_for'
+  # 捜索願に関するルーティング
   post 'drops/create_order' => 'drops#create_order', as: 'create_order'
+  
   
   # ホームに関するルーティング
   root 'homes#top'
   get 'homes/mypage/:id' => 'homes#mypage', as: 'mypage'
+  delete 'homes/destroy_order', as: 'destroy_order'
   get 'homes/adminpage' => 'homes#adminpage', as: 'adminpage'
+  
 
   # Userのサインアップ、ログイン機能に関するルーティング
   devise_for :users, controllers: {
