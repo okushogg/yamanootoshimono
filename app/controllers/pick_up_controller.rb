@@ -43,13 +43,20 @@ class PickUpController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = if user_signed_in?
-                      current_user.id
-                    else
-                      User.find_by(name: 'Sam').id
-                    end
+    if user_signed_in?
+      @user = current_user
+    else
+      @user = User.find_by(name: 'Sam')
+    end
+    @post.user_id = @user.id
     if @post.save
-      redirect_to complete_path, flash: { notice: '新規投稿完了しました。' }
+      match_orders = Order.where(place_id: @post.place.id).where(item_genre_id: @post.item_genre.id)
+      if match_orders.blank?
+        redirect_to complete_path, flash: { notice: '新規投稿完了しました。' }
+      else
+        @post.create_notification_order!(@user.id, @post.id)
+        redirect_to complete_path, flash: { notice: '新規投稿完了しました!' }
+      end
     else
       @place = Place.find_by(id: session[:place_id])
       @item_genre = ItemGenre.find_by(id: session[:item_genre_id])

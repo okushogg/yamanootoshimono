@@ -41,4 +41,27 @@ class Post < ApplicationRecord
     notification.save if notification.valid?
   end
   
+  def create_notification_order!(user_id, post_id)
+    post = Post.find(post_id)
+    match_orders = Order.where(place_id: post.place.id).where(item_genre_id: post.item_genre_id) 
+    match_orders.each do |match_order|
+      save_notification_order!(user_id, match_order['id'], match_order['user_id'])
+    end
+  end
+  
+  def save_notification_order!(user_id, order_id, visited_id)
+    user = User.find(user_id)
+    notification = user.active_notifications.new(
+      post_id: id,
+      order_id: order_id,
+      visited_id: visited_id,
+      action: 'order'
+    )
+    if notification.visiter_id == notification.visited_id
+      notification.checked = true
+    end
+    notification.save if notification.valid?
+  end
+  
+  
 end
