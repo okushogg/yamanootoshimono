@@ -59,7 +59,11 @@ Rails.application.routes.draw do
   put 'withdraw/:name' => 'users#withdraw'
   
   # 通知に関するルーティング
-  resources :notifications, only: :index
+  resources :notifications, only: :index do
+    collection do
+      delete 'destroy_all'
+    end
+  end
   
   
   # 例外処理
