@@ -26,6 +26,7 @@
 <!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
 <div class="col-md-12">
       <div class="box">
+        <% if @posts.present? %>
         <h3 style="color: #fff; margin: 10px auto;"> <%= "『#{@place.prefecture.prefecture_name}・#{@place.name}・#{@item_genre.name}』 検索結果"   %></h3>
         <%= link_to '戻る', :back,  class:"fas fa-undo btn btn-light"%>
         <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
@@ -56,11 +57,14 @@
 <!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
 
  <div class="col-md-4 pagenation"><%= paginate @posts %></div>
-
+<% else %>
+<h3 style="color: #fff; margin: 10px auto;">該当する投稿はありませんでした。</h3>
+<% end %>
 <!--捜索願入力フォーム-->
 <div class="col-md-12">
 <div class="box">
 <h3 style="color: #fff; margin: 10px auto;">捜索願</h3>
+<p style="color: #fff;">見つかりませんでしたか？捜索願を提出しましょう。<br>場所とアイテムジャンルが同じ投稿を検知してお知らせします。</p>
 <%= form_with model: @order, url: create_order_path, local:true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
 <div class="col-md-5 post-content">

@@ -11,8 +11,9 @@
            <i class="fa fa-circle" style="color: gold;"></i>
           <% end %>
          <!--通知の有無を知らせる。-->
+          <%= link_to "", notifications_path, class: 'fas fa-bell fa-lg nav-link text-light' %>
           <div class="post-content">
-             <%= link_to "ようこそ #{current_user.name} さん", notifications_path %> 
+             <%= "ようこそ #{current_user.name} さん" %> 
           </div> 
          <% else %>
           <div class="mx-auto" style="color: #ffffff;"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-light" %></div> 

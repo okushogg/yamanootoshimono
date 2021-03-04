@@ -12,7 +12,7 @@
     
     <!--ユーザーの捜索願一覧-->
     <div class="col-md-12">
-      <div class="box">
+      <div class="box text-center">
         <h3 style="color: #fff; margin: 10px auto;">捜索願一覧</h3>
         <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
         <tbody>
@@ -35,7 +35,7 @@
     </div>
     
     <!--ユーザー情報変更リンク-->
-    <div class="row" >
+    <div class="row">
     <div class="col-md-3 text-center post-content" style="margin: 10px auto;">
         <span style="margin: 10px;"><%= link_to 'ユーザー情報の編集', edit_user_registration_path(current_user.id), class:"fas fa-user-edit" %></span>
         <%= link_to '戻る', :back,  class:"fas fa-undo"%>

@@ -10,7 +10,7 @@ module NotificationsHelper
     case notification.action
       when "comment" then
         @comment = Comment.find_by(id: @visiter_comment)&.content
-        tag.a(@visiter.name, href:mypage_path(@visiter), style:"font-weight: bold;")+"が"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にコメントしました"
+        tag.a(@visiter.name, href:mypage_path(@visiter), style:"font-weight: bold;")+"さんが"+tag.a('あなたの投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"にコメントしました"
       when "order" then
         tag.a('あなたの捜索願', href:mypage_path(@visited), style:"font-weight: bold;")+"に合致する"+tag.a('投稿', href:post_path(notification.post_id), style:"font-weight: bold;")+"がありました"
     end
