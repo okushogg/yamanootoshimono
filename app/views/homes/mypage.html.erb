@@ -1,14 +1,41 @@
 <div class="cotainer">
+  <!--ユーザ名表示-->
   <div class="row text-center">
     <h4 class="col-md-6 box" style="color: #fff; margin: 10px auto;"><%= " #{current_user.name} さん のマイページ" %></h4>
   </div>
   
+    <!--ユーザーの投稿表示-->
      <div class="row box" style="margin-top:20px; margin-right: auto; margin-left: auto;">
        <h3 class="col-md-12 text-center " style="color:#fff; margin: 5px">見つけてもらった迷子たち</h3>
         <%= render 'posts/list', posts: @posts %>
      </div>
     
-    <div class="row" >
+    <!--ユーザーの捜索願一覧-->
+    <div class="col-md-12">
+      <div class="box text-center">
+        <h3 style="color: #fff; margin: 10px auto;">捜索願一覧</h3>
+        <table class='col-md-10 table table-hover table-inverse' style="background-color: #fff; margin: 10px auto;">
+        <tbody>
+          <% @orders.each do |order| %>
+            <tr>
+              <td><%= order.item_genre.name %></td>
+              <td><%= order.place.name %></td>
+              <td><%= order.title %></td>
+              <td><%= order.content %></td>
+              <td>
+                <%= link_to destroy_order_path(order_id: order.id), method: :delete do %>
+                  <i class="fas fa-trash" style="color: black;"></i>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    
+    <!--ユーザー情報変更リンク-->
+    <div class="row">
     <div class="col-md-3 text-center post-content" style="margin: 10px auto;">
         <span style="margin: 10px;"><%= link_to 'ユーザー情報の編集', edit_user_registration_path(current_user.id), class:"fas fa-user-edit" %></span>
         <%= link_to '戻る', :back,  class:"fas fa-undo"%>

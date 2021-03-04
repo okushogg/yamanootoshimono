@@ -1,0 +1,9 @@
+<% visiter = notification.visiter %>
+<% post = notification.post %>
+
+<div class="post-content">
+  <span class="moderate-font"><%= notification_form(notification) %></span>
+  <% if !@comment.nil? %>
+    <p class="moderate-font text-center" style="color: #000; margin-bottom: 0px;"><%= @comment %></p>
+  <% end %>
+</div>

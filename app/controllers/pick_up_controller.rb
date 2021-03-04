@@ -1,6 +1,5 @@
 class PickUpController < ApplicationController
   def step1
-    # session[:id] = params[:prefecture_id]
     @regions1 = Prefecture.where(region: 'hokkaido_touhoku')
     @regions2 = Prefecture.where(region: 'kanto')
     @regions3 = Prefecture.where(region: 'chubu')
@@ -14,44 +13,53 @@ class PickUpController < ApplicationController
     @prefecture = Prefecture.find(params[:id])
     @places = Place.where(prefecture_id: @prefecture.id)
     @place = Place.new
+    session[:prefecture_id] = @prefecture.id 
   end
 
   def create_place
-    @prefecture = Prefecture.find_by(params[:prefecture_id])
+    @prefecture = Prefecture.find_by(id: session[:prefecture_id])
     @place = Place.new(place_params)
     if @place.save
       redirect_to step2_path(@place.prefecture.id), flash: { notice: '新しい山を登録しました。' }
     else
-      @prefecture = Prefecture.find_by(params[:prefecture_id])
+      @prefecture = Prefecture.find_by(id: session[:prefecture_id])
       @places = Place.where(prefecture_id: @prefecture.id)
       render 'step2'
     end
   end
 
   def step3
-    @place = Place.find(params[:place_id])
+    @place = Place.find(params[:id])
     @item_genres = ItemGenre.all
     session[:place_id] = @place.id
   end
 
   def step4
     @post = Post.new
-    @place = Place.find(params[:place_id])
-    @item_genre = ItemGenre.find(params[:item_genre_id])
+    @place = Place.find_by(id: session[:place_id])
+    @item_genre = ItemGenre.find(params[:id])
+    session[:item_genre_id] = @item_genre.id
   end
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = if user_signed_in?
-                      current_user.id
-                    else
-                      User.find_by(name: 'ゲスト').id
-                    end
-    if @post.save
-      redirect_to complete_path, flash: { notice: '新規投稿完了しました。' }
+    if user_signed_in?
+      @user = current_user
     else
-      @place = Place.find_by(params[:place_id])
-      @item_genre = ItemGenre.find_by(params[:item_genre_id])
+      @user = User.find_by(name: 'Sam')
+    end
+    @post.user_id = @user.id
+    if @post.save
+      match_orders = Order.where(place_id: @post.place.id).where(item_genre_id: @post.item_genre.id)
+      if match_orders.blank?
+        redirect_to complete_path, flash: { notice: '新規投稿完了しました。' }
+      else
+        @post.create_notification_order!(@user.id, @post.id)
+        redirect_to complete_path, flash: { notice: '新規投稿完了しました!' }
+      end
+    else
+      @place = Place.find_by(id: session[:place_id])
+      @item_genre = ItemGenre.find_by(id: session[:item_genre_id])
       render 'step4'
     end
   end

@@ -9,6 +9,13 @@ class HomesController < ApplicationController
   def mypage
     @user = User.find(params[:id])
     @posts = Post.where(user_id: params[:id])
+    @orders = Order.where(user_id: params[:id])
+  end
+  
+  def destroy_order
+    @order = Order.find_by(params[order_id: :order_id])
+    @order.destroy
+    redirect_to mypage_path(current_user.id)
   end
   
   def adminpage

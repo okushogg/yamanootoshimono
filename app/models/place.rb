@@ -1,5 +1,6 @@
 class Place < ApplicationRecord
   has_many :posts, dependent: :destroy
+  has_many :orders, dependent: :destroy
   belongs_to :prefecture
   validates :prefecture_id, presence: true
   validates :name, presence: true, length: { in: 1..10 }

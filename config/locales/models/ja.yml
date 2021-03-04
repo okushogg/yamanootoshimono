@@ -5,6 +5,7 @@ ja:
       post: 投稿
       user: ユーザー
       item_genre: アイテムジャンル
+      comment: コメント
     attributes:
       place:
         name: 山の名前
@@ -19,6 +20,8 @@ ja:
         name: ユーザー名
       item_genre:
         name: アイテムジャンルの名前
+      comment:
+        content: コメント内容
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>

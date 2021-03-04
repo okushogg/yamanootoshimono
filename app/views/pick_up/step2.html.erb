@@ -1,3 +1,8 @@
+<div class="col-md-4 box">
+  <% breadcrumb :step2, @place  %>
+  <%= breadcrumbs separator: " > " , class: :logo %>
+</div>
+
 <div class="container">
   <div class="row text-center">
     <!--都道府県情報表示部分-->
@@ -36,7 +41,7 @@
       <div class="col-md-8" style="margin: 0px auto;">
         <div class="box">
           <% @places.each_with_index do |place, i| %>
-           <div style="display: inline-block;"><%= link_to place.name, step3_path(place, place_id: place.id ), class:"btn btn-light" %></div>
+           <div style="display: inline-block;"><%= link_to place.name, step3_path(place.id), class:"btn btn-light" %></div>
            <% if (i+1)%5 == 0 %> <br> <br> <% end %>
           <% end %>
         </div>

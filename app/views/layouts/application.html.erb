@@ -11,6 +11,8 @@
   </head>
   
   
+  
+  <body>
   <!--Noticeを表示するための記述-->
   <% if notice.present? %>
     <h3 class="notice-bar"><%= flash[:notice] %></h3>
@@ -20,9 +22,11 @@
     <h3 class="notice-bar"><%= flash[:alert] %></h3>
   <% end %>
   <!--Noticeを表示するための記述-->
-  <body>
+  
+  <!--背景画像-->
   <div class="jumbotron jumbotron-extend" style="margin: 0px;">
   <%= render 'layouts/header' %>
+  <!--背景画像-->
   
     <%= yield %>
   </div>
