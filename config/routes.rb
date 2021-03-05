@@ -71,6 +71,6 @@ Rails.application.routes.draw do
   
   
   # 例外処理
-  # get '*not_found', controller: 'application', action: 'render_404'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  mount Refile.app, at: Refile.mount_point, as: :refile_app
+  get '*path', to: 'application#render_404'
 end
