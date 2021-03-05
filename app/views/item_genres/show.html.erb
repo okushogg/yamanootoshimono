@@ -1,24 +1,26 @@
 <div class="container">
-	<div class="row test-center">
+	<div class="row text-center">
 		
 		<!--アイテムジャンル表示部分-->
-	 	<div class="col-md-3 card text-center" style="border-radius: 20px; border:solid 2px #333; display: inline-block; margin: 10px auto;">
-			<h6 class="card-title" style="font-size: 20px;"><%= @item_genre.name %></h6>
+	     <div class="col-md-4 post-content" style="border-radius: 20px; border:solid 2px #333; display: inline-block; margin: 10px auto;">
+				<p style="font-size: 25px; margin: 10px;">
+				  <%= @item_genre.name %>
+				</p>
 				<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
-				<% if @item_genre.is_original? %>
+				<%# if @item_genre.is_original? %>
 					<!--アイテムジャンルの画像が用意できるまでNoImageを使う-->
 					<%#= image_tag "item_genres/item_genre#{item_genre.id}.png", :size =>'150x150' %>
-  				<%= image_tag "no_image.png", :size =>'150x150' %>
+  				<%#= image_tag "no_image.png", :size =>'150x150' %>
 				<!--追加されたジャンルの場合はアップされた画像を利用する-->
-				<% else %>
-					<%= attachment_image_tag @item_genre, :genre_image, format: 'png', size:"150x150", fallback: "no_image.png" %>
+				<%# else %>
+					<%#= attachment_image_tag @item_genre, :genre_image, format: 'png', size:"150x150", fallback: "no_image.png" %>
 				
 				<!--Adminだけ編集ボタンを表示-->
 				<% if current_user.admin? %> 
 				  <%= link_to "編集",  edit_item_genre_path(@item_genre.id), class: "btn btn-info" %>
 				<% end %>
 				<!--Adminだけ編集ボタンを表示-->
-				<% end %>
+				<%# end %>
 			</div>
 		<!--アイテムジャンル表示部分-->
 	
@@ -55,4 +57,4 @@
     <!--投稿一覧ページ-->
   
   </div>
-</cdiv>
+</div>
