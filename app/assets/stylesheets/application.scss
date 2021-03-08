@@ -49,7 +49,7 @@
 
 // 背景に黒い半透明の枠
 .box{
-  background-color:rgba(0, 0, 0, 0.5);
+  background-color: #90B494;
   border-radius: 20px;
   margin: 10px 0 ;
   padding: 10px 5px;
@@ -129,9 +129,14 @@ button.comment{
     margin-left:20px;
 }
 
+section{
+  margin: 0px;
+  background: #BFC8AD;
+}
+
 footer {
   text-align:center;
-  background: #000;
+  background: #DBCFB0;
   color: #fff;
   width: 100%;
   height: 50px;
