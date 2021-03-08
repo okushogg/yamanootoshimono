@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Yamanootoshimono</title>
+    <title>山の落とし物</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <script src="https://kit.fontawesome.com/d7433381ba.js" crossorigin="anonymous"></script>
+    
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -25,10 +26,18 @@
   
   <!--背景画像-->
   <div class="jumbotron jumbotron-extend" style="margin: 0px;">
-  <%= render 'layouts/header' %>
   <!--背景画像-->
   
+    <%= render 'layouts/header' %>
+ 
+  
+  <section>
     <%= yield %>
+  </section>
+  
+  
+    <%= render 'layouts/footer' %>
+  
   </div>
   </body>
 </html>
