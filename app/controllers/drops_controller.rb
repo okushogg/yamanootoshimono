@@ -42,7 +42,7 @@ class DropsController < ApplicationController
   def create_order
     @order = Order.new(order_params)
     @order.user_id = current_user.id 
-    if @order.save!
+    if @order.save
       redirect_to mypage_path(current_user.id), flash: { notice: '新しく捜索願を作成しました。' }
     else
       @q = Post.search(params[:q])
