@@ -23,18 +23,10 @@
     <h3 class="notice-bar"><%= flash[:alert] %></h3>
   <% end %>
   <!--Noticeを表示するための記述-->
-  
-  
-    <%= render 'layouts/header' %>
- 
-  
+  <%= render 'layouts/header' %>
   <section>
     <%= yield %>
   </section>
-  
-  
-    <%= render 'layouts/footer' %>
-  
-  </div>
+  <%= render 'layouts/footer' %>
   </body>
 </html>

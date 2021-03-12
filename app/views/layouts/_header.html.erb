@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-light" style="background-color: #DBCFB0; border-radius: 20px;">
+    <nav class="navbar navbar-light" style="background-color: #DBCFB0;">
 
        <a class="navbar-brand" style="color: #ffffff; font-family:"游ゴシック","arial unicode ms",sans-serif; font-size: 25px;" href="/">
           <%= image_tag "logo.png",height: 90 , width: 200 %>
@@ -11,8 +11,9 @@
            <i class="fa fa-circle" style="color: gold;"></i>
           <% end %>
          <!--通知の有無を知らせる。-->
-          <%= link_to "", notifications_path, class: 'fas fa-bell fa-lg nav-link text-light' %>
+          
           <div class="post-content">
+             <%= link_to "", notifications_path, class: 'fas fa-bell fa-lg nav-link text-dark' %>
              <%= "ようこそ #{current_user.name} さん" %> 
           </div> 
          <% else %>
