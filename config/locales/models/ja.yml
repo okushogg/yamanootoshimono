@@ -22,6 +22,9 @@ ja:
         name: アイテムジャンルの名前
       comment:
         content: コメント内容
+      order:
+        title: タイトル
+        content: 詳細
   views:
     pagination:
       first: <i class="fas fa-angle-double-left"></i>
