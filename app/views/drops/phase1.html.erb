@@ -10,8 +10,8 @@
             <td style="font-size:25px;">北海道・東北地方</td>
             <tr style="margin:5px">
               <td>
-                <% @regions1.each do |region1| %>
-                <%= link_to region1.prefecture_name, phase2_path(region1.id), class: "btn btn-light" %>
+                <% @regions1.each do |region| %>
+                <%= link_to region.prefecture_name, phase2_path(region.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
@@ -19,8 +19,8 @@
             <td style="font-size:25px;">関東地方</td>
             <tr>
               <td>
-                <% @regions2.each do |region2| %>
-                <%= link_to region2.prefecture_name, phase2_path(region2.id), class: "btn btn-light" %>
+                <% @regions2.each do |region| %>
+                <%= link_to region.prefecture_name, phase2_path(region.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
@@ -28,8 +28,8 @@
             <td style="font-size:25px;">中部地方</td>
             <tr>
               <td>
-                <% @regions3.each do |region3| %>
-                <%= link_to region3.prefecture_name, phase2_path(region3.id), class: "btn btn-light" %>
+                <% @regions3.each do |region| %>
+                <%= link_to region.prefecture_name, phase2_path(region.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
@@ -37,8 +37,8 @@
             <td style="font-size:25px;">近畿地方</td>
             <tr>
               <td>
-                <% @regions4.each do |region4| %>
-                <%= link_to region4.prefecture_name, phase2_path(region4.id), class: "btn btn-light" %>
+                <% @regions4.each do |region| %>
+                <%= link_to region.prefecture_name, phase2_path(region.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
@@ -46,8 +46,8 @@
             <td style="font-size:25px;">中国地方</td>
             <tr>
               <td>
-                <% @regions5.each do |region5| %>
-                <%= link_to region5.prefecture_name, phase2_path(region5.id), class: "btn btn-light" %>
+                <% @regions5.each do |region| %>
+                <%= link_to region.prefecture_name, phase2_path(region.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
@@ -55,8 +55,8 @@
             <td style="font-size:25px;">四国地方</td>
             <tr>
               <td>
-                <% @regions6.each do |region6| %>
-                <%= link_to region6.prefecture_name, phase2_path(region6.id), class: "btn btn-light" %>
+                <% @regions6.each do |region| %>
+                <%= link_to region.prefecture_name, phase2_path(region.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
@@ -64,8 +64,8 @@
             <td style="font-size:25px;">九州・沖縄地方</td>
             <tr>
               <td>
-                <% @regions7.each do |region7| %>
-                <%= link_to region7.prefecture_name, phase2_path(region7.id), class: "btn btn-light" %>
+                <% @regions7.each do |region| %>
+                <%= link_to region.prefecture_name, phase2_path(region.id), class: "btn btn-light" %>
                 <% end %>
               </td>
             </tr>
