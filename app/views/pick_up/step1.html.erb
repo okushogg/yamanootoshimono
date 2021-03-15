@@ -1,4 +1,4 @@
-<%#= render 'prefectures/prefecture', path: :step2_path(region1, prefecture_id: region1.id) %>
+
 <div class="col-md-3 box">
   <% breadcrumb :step1, @prefecture  %>
   <%= breadcrumbs separator: " > " , class: :logo %>
@@ -12,13 +12,7 @@
         <table class="col-md-12">
           <tbody>
             <td style="font-size:25px;">北海道・東北地方</td>
-            <tr style="margin:5px">
-              <td>
-                <% @regions1.each do |region| %>
-                <%= link_to region.prefecture_name, step2_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
+            <%= render 'prefectures/region', regions: @regions1  %>
             
             <td style="font-size:25px;">関東地方</td>
             <tr>

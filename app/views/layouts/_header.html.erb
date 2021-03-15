@@ -12,12 +12,13 @@
           <% end %>
          <!--通知の有無を知らせる。-->
           
-          <div class="post-content">
+          <!--ユーザーネーム表示-->
+          <div class="post-content" style="float: left;">
              <%= link_to "", notifications_path, class: 'fas fa-bell fa-lg nav-link text-dark' %>
              <%= "ようこそ #{current_user.name} さん" %> 
           </div> 
          <% else %>
-          <div class="mx-auto" style="color: #ffffff;"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-light" %></div> 
+          <div class="mx-auto float-left" style="color: #ffffff;"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-light" %></div> 
          <% end %>
          
          <div id="sp-menu">
