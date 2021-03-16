@@ -1,25 +1,10 @@
-<div class="col-md-6 box">
-  <% breadcrumb :step3, @place  %>
-  <%= breadcrumbs separator: " > " , class: :logo %>
-</div>
-
-<div class="container">
-	<div class="row text-center">
-	
-		<div class="col-md-12">
-			<div class="box" style="color: #fff;">
-				<h2><%= @place.name %>で</h2>
-				<h4>あなたの拾ったものを以下のジャンルの中から選んでください</h4>
-				<%= link_to '戻る', :back,  class:"fas fa-undo tn btn-light"%>
-			</div>
-		</div>
 <!--アイテムジャンル一覧ページ-->
 <div class="col-md-12">
 				<div class="box">
-							<% @item_genres.each do |item_genre| %>
+							<% item_genres.each do |item_genre| %>
 								<div class="col-md-3 post-content">
 								<p style="font-size: 20px; margin: 10px;">
-								<%= link_to step4_path(item_genre.id) do %>
+								<%= link_to item_genre_path(item_genre.id) do %>
 								  <%= item_genre.name %>
 								<% end %>
 								</p>
@@ -41,6 +26,3 @@
 				</div>
 			</div>
 			<!--アイテムジャンル一覧ページ-->
-			
-	</div>
-</div>
