@@ -1,24 +1,24 @@
 <!--関連するポストを並べる-->
-<% posts.last(6).each do |post| %>
-  <div class="col-md-2 card text-center" style="border-radius: 20px; border:solid 2px #333;">
+<% posts.last(4).each do |post| %>
+  <div class="col-md-2 text-center">
       <%= link_to post_path(post.id) do %>
         <div class="mt-3">
           <% if post.post_images.present? %>
           <% post.post_images.last(1).each do |image| %>
-              <%= attachment_image_tag image, :image, :fill, 150, 150 %>
+              <p class="card"><%= attachment_image_tag image, :image, :fill, 150, 150 %></p>
           <% end %>
           <% else %>
               <%= image_tag 'no_image.png', size: '150x150' %>
           <% end %>
         </div>
         <br>
-        <div class="card-body" style="system-ui">
-            <h6 class="card-title"><%= post.place.name %></h6>
-            <p class="card-text"><%= post.prefecture.prefecture_name %></p>
-            <p class="card-text"><%= post.item_genre.name %></p>
-            <p class="card-text"><%= post.found_day %></p>
-            <p class="card-text"><%= post.comments.count %>件のコメント</p>
-          </div>
+        <!--<div class="card-body" style="system-ui">-->
+        <!--    <h6 class="card-title"><%#= post.place.name %></h6>-->
+        <!--    <p class="card-text"><%#= post.prefecture.prefecture_name %></p>-->
+        <!--    <p class="card-text"><%#= post.item_genre.name %></p>-->
+        <!--    <p class="card-text"><%#= post.found_day %></p>-->
+        <!--    <p class="card-text"><%#= post.comments.count %>件のコメント</p>-->
+        <!--</div>-->
       <% end %>
   </div>
 <% end %>
