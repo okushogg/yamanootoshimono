@@ -1,5 +1,5 @@
 <header>
-    <nav class="navbar navbar-light" style="background-color: rgba(0, 0, 0, 0.5); border-radius: 20px; ">
+    <nav class="navbar navbar-light" style="background-color: #DBCFB0;">
 
        <a class="navbar-brand" style="color: #ffffff; font-family:"游ゴシック","arial unicode ms",sans-serif; font-size: 25px;" href="/">
           <%= image_tag "logo.png",height: 90 , width: 200 %>
@@ -11,28 +11,54 @@
            <i class="fa fa-circle" style="color: gold;"></i>
           <% end %>
          <!--通知の有無を知らせる。-->
-          <%= link_to "", notifications_path, class: 'fas fa-bell fa-lg nav-link text-light' %>
+          
           <div class="post-content">
+             <%= link_to "", notifications_path, class: 'fas fa-bell fa-lg nav-link text-dark' %>
              <%= "ようこそ #{current_user.name} さん" %> 
           </div> 
          <% else %>
           <div class="mx-auto" style="color: #ffffff;"><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class:"btn btn-light" %></div> 
          <% end %>
          
-         <ul class="nav pull-right nav-pills ml-auto mt-2 mt-lg-0">
-          <% if user_signed_in? %>
-           <li class="nav-item"><%= link_to "ユーザー情報", mypage_path(current_user.id), class: 'fas fa-user nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "山名", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "道具", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
-          <% else %>
-           <li class="nav-item"><%= link_to "山名", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "道具", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' %></li>
-           <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
-          <% end %>
-         </ul>
+         <div id="sp-menu">
+          <ul class="nav pull-right nav-pills ml-auto mt-2 mt-lg-0">
+            <% if user_signed_in? %>
+             <li class="nav-item"><%= link_to "ユーザー情報", mypage_path(current_user.id), class: 'fas fa-user nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "山名", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "道具", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'fas fa-sign-out-alt nav-link text-light' %></li>
+            <% else %>
+             <li class="nav-item"><%= link_to "山名", prefectures_path, class: 'fas fa-mountain nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "道具", item_genres_path, class: 'fas fa-toolbox nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: 'fas fa-book-open nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: 'fas fa-user-plus nav-link text-light' %></li>
+             <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: 'fas fa-sign-in-alt nav-link text-light' %></li>
+            <% end %>
+           </ul>
+         </div>
     </nav>
+    
+   <div id="hm-icon">
+    <a class="menu-trigger" href="#">
+     <span></span>
+     <span></span>
+     <span></span>
+    </a>
+   </div>
+    
 </header>
+
+<script>
+
+ $(function() {
+  $('.menu-trigger').on('click', function(event) {
+    $(this).toggleClass('active')
+    $('li').removeClass('nav-item')
+    $('ul').removeClass('nav ml-auto mt-2 mt-lg-0 pull-right')
+    $('#sp-menu').fadeToggle();
+    event.preventDefault();
+  });
+ });
+ 
+</script>
