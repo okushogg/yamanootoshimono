@@ -1,1 +1,16 @@
-<%= render 'prefectures/prefecture', path: phase2_path(region.id) %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <div class="box" style="color: #fff;">
+      <h2>都道府県を選んでください。</h2>
+        <table class="col-md-12">
+          <tbody>
+            <% @regions.each do |region| %>
+              <%= render 'prefectures/prefecture',{ region: region, path_name: @path_name} %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
