@@ -1,24 +1,23 @@
 <!--関連するポストを並べる-->
 <% posts.last(4).each do |post| %>
-  <div class="col-md-2 text-center">
+  <div class="col-md-6 card text-center" style="border-radius: 20px; border:solid 2px #333;">
       <%= link_to post_path(post.id) do %>
         <div class="mt-3">
           <% if post.post_images.present? %>
           <% post.post_images.last(1).each do |image| %>
-              <p class="card"><%= attachment_image_tag image, :image, :fill, 150, 150 %></p>
+              <%= attachment_image_tag image, :image, :fill, 450, 300, class:"rounded-pill border border-dark"; %>
           <% end %>
           <% else %>
-              <%= image_tag 'no_image.png', size: '150x150' %>
+              <%= image_tag 'no_image.png', size: '150x150',class:"rounded-lg border border-dark card-img-top"; %>
           <% end %>
         </div>
         <br>
-        <!--<div class="card-body" style="system-ui">-->
-        <!--    <h6 class="card-title"><%#= post.place.name %></h6>-->
-        <!--    <p class="card-text"><%#= post.prefecture.prefecture_name %></p>-->
-        <!--    <p class="card-text"><%#= post.item_genre.name %></p>-->
-        <!--    <p class="card-text"><%#= post.found_day %></p>-->
-        <!--    <p class="card-text"><%#= post.comments.count %>件のコメント</p>-->
-        <!--</div>-->
+        <div class="card-body" style="system-ui">
+            <p class="card-text fas fa-mountain"><%= post.place.name %>・<%= post.prefecture.prefecture_name %></p>
+            <p class="card-text fas fa-toolbox ml-2"><%= post.item_genre.name %></p></br>
+            <p class="card-text fas fa-calendar"><%= post.found_day %></p>
+            <p class="card-text fas fa-comment ml-2"><%= post.comments.count %></p>
+          </div>
       <% end %>
   </div>
 <% end %>
