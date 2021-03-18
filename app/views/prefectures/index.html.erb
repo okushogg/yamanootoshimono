@@ -2,71 +2,12 @@
   <div class="row">
     <div class="col-md-12 text-center">
       <div class="box" style="color: #fff;">
-        <h2>都道府県を選んでください。</h2>
+      <h2>都道府県を選んでください。</h2>
         <table class="col-md-12">
           <tbody>
-            <td style="font-size:25px;">北海道・東北地方</td>
-            <tr style="margin:5px">
-              <td>
-                <% @regions1.each do |region| %>
-                <%= link_to region.prefecture_name, prefecture_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
-            
-            <td style="font-size:25px;">関東地方</td>
-            <tr>
-              <td>
-                <% @regions2.each do |region| %>
-                <%= link_to region.prefecture_name, prefecture_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
-            
-            <td style="font-size:25px;">中部地方</td>
-            <tr>
-              <td>
-                <% @regions3.each do |region| %>
-                <%= link_to region.prefecture_name, prefecture_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
-            
-            <td style="font-size:25px;">近畿地方</td>
-            <tr>
-              <td>
-                <% @regions4.each do |region| %>
-                <%= link_to region.prefecture_name, prefecture_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
-            
-            <td style="font-size:25px;">中国地方</td>
-            <tr>
-              <td>
-                <% @regions5.each do |region| %>
-                <%= link_to region.prefecture_name, prefecture_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
-            
-            <td style="font-size:25px;">四国地方</td>
-            <tr>
-              <td>
-                <% @regions6.each do |region| %>
-                <%= link_to region.prefecture_name, prefecture_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
-            
-            <td style="font-size:25px;">九州・沖縄地方</td>
-            <tr>
-              <td>
-                <% @regions7.each do |region| %>
-                <%= link_to region.prefecture_name, prefecture_path(region.id), class: "btn btn-light" %>
-                <% end %>
-              </td>
-            </tr>
+            <% @regions.each do |region| %>
+              <%= render 'prefectures/prefecture',{ region: region, path_name: @path_name} %>
+            <% end %>
           </tbody>
         </table>
       </div>
