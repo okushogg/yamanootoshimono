@@ -1,12 +1,7 @@
 class PickUpController < ApplicationController
   def step1
-    @regions1 = Prefecture.where(region: 'hokkaido_touhoku')
-    @regions2 = Prefecture.where(region: 'kanto')
-    @regions3 = Prefecture.where(region: 'chubu')
-    @regions4 = Prefecture.where(region: 'kinki')
-    @regions5 = Prefecture.where(region: 'chugoku')
-    @regions6 = Prefecture.where(region: 'shikoku')
-    @regions7 = Prefecture.where(region: 'kyushu_okinawa')
+    @regions = ['hokkaido_touhoku', 'kanto', 'chubu', 'kinki', 'chugoku', 'shikoku', 'kyushu_okinawa']
+    @path_name = "pick_up"
   end
 
   def step2
