@@ -1,6 +1,6 @@
 <!--関連するポストを並べる-->
 <% posts.last(4).each do |post| %>
-  <div class="col-md-6 card text-center" style="border-radius: 20px; border:solid 2px #333;">
+  <div class="mt-5 col-md-8 offset-2 card text-center " style="border-radius: 20px; border:solid 2px #333;">
       <%= link_to post_path(post.id) do %>
         <div class="mt-3">
           <% if post.post_images.present? %>
