@@ -29,7 +29,7 @@
 	  <!--新規アイテムジャンル登録フォーム-->
 	
 	  <!--アイテムジャンル一覧ページ-->
-	    <%= render 'item_genres/item_genre_list', item_genres: @item_genres %>
+	    <%= render 'item_genres/item_genre_list', { item_genres: @item_genres, path_name: @path_name } %>
 		<!--アイテムジャンル一覧ページ-->
 	</div>
 </div>

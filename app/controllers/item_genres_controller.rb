@@ -4,6 +4,7 @@ class ItemGenresController < ApplicationController
   def index
     @item_genre = ItemGenre.new
     @item_genres = ItemGenre.all
+    @path_name = "item_genre"
   end
 
   def create

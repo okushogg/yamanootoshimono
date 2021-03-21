@@ -14,6 +14,7 @@ class DropsController < ApplicationController
 
   def phase3
     @place = Place.find(params[:id])
+    @path_name ="drops"
     @item_genres = ItemGenre.all
     session[:place_id] = @place.id
   end

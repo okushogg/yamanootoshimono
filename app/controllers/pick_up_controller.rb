@@ -25,6 +25,7 @@ class PickUpController < ApplicationController
 
   def step3
     @place = Place.find(params[:id])
+    @path_name = "pick_up"
     @item_genres = ItemGenre.all
     session[:place_id] = @place.id
   end

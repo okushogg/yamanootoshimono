@@ -4,9 +4,9 @@
 							<% item_genres.each do |item_genre| %>
 								<div class="col-md-3 post-content">
 								<p style="font-size: 20px; margin: 10px;">
-								<%= link_to item_genre_path(item_genre.id) do %>
-								  <%= item_genre.name %>
-								<% end %>
+									<%= link_to get_item_genre_path(item_genre.id, path_name) do %>
+									  <%= item_genre.name %>
+									<% end %>
 								</p>
 									<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
 									<%# if item_genre.is_original? %>

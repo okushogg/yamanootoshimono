@@ -10,33 +10,8 @@
 		</div>
 		
 		<!--アイテムジャンル一覧ページ-->
-		<div class="col-md-12">
-				<div class="box">
-							<% @item_genres.each do |item_genre| %>
-								<div class="col-md-3 post-content">
-								<p style="font-size: 20px; margin: 10px;">
-								<%= link_to phase4_path(item_genre.id) do %>
-								  <%= item_genre.name %>
-								<% end %>
-								</p>
-									<!--Seedにあるオリジナルの場合はもともとあった画像を使う。-->
-									<%# if item_genre.is_original? %>
-  										<%#= link_to item_genre_path(item_genre.id) do %>
-  									    <!--アイテムジャンルの画像が用意できるまでNoImageを使う-->
-  									    <%#= image_tag "item_genres/item_genre#{item_genre.id}.png", :size =>'150x150' %>
-  									    <%#= image_tag "no_image.png", :size =>'150x150' %>
-  									  <%# end %>
-  								<!--追加されたジャンルの場合はアップされた画像を利用する-->
-									<%# else %>
-    									<%#= link_to item_genre_path(item_genre.id) do %>
-    										<%#= attachment_image_tag item_genre, :genre_image, format: 'png', size:"150x150", fallback: "no_image.png" %>
-    									<%# end %>
-									<%# end %>
-								</div>
-							<% end %>
-				</div>
-			</div>
-			<!--アイテムジャンル一覧ページ-->
+	    <%= render 'item_genres/item_genre_list', { item_genres: @item_genres, path_name: @path_name } %>
+		<!--アイテムジャンル一覧ページ-->
 			
 	</div>
 </div>
