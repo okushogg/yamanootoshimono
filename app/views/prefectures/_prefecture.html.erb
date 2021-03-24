@@ -1,8 +1,9 @@
-<td style="font-size:25px;"><%= get_region_name(region) %></td>
-  <tr style="margin:5px">
-  <td>
-    <% Prefecture.where(region: region).each do |r| %>
-      <%= link_to r.prefecture_name, get_prefecture_path(r.id, path_name), class: "btn btn-light" %>
-    <% end %>
-  </td>
-</tr>
+<p id="tab-menu" style="font-size:25px; margin: 15px;">
+  <%= get_region_name(region) %>
+</p>
+
+<p  id="tab-contents" class="tab">
+  <% Prefecture.where(region: region).each do |r| %>
+    <%= link_to r.prefecture_name, get_prefecture_path(r.id, path_name), class: "btn btn-info btn-lg m-1" %>
+  <% end %>
+</p>

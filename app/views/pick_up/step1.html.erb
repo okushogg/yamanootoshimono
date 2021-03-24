@@ -6,17 +6,14 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-md-12 text-center">
-      <div class="box" style="color: #fff;">
+    <div class="col-md-12 text-center my-5">
+      <div class="box" style="color: #000;">
       <h2>都道府県を選んでください。</h2>
-        <table class="col-md-12">
-          <tbody>
+        <div class="col-md-12">
             <% @regions.each do |region| %>
               <%= render 'prefectures/prefecture',{ region: region, path_name: @path_name} %>
             <% end %>
-          </tbody>
-        </table>
-      </div>
+        </div>
     </div>
   </div>
 </div>

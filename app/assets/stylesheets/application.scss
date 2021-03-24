@@ -14,13 +14,13 @@
  *= require_self
  */
 // 背景表示
-.jumbotron-extend {
-    position: relative;
-    height: 200vh;
-    min-height: 300px;
-    background: image-url("forest.jpg") no-repeat center center;
-    background-size: cover;
-}
+// .jumbotron-extend {
+//     position: relative;
+//     height: 200vh;
+//     min-height: 300px;
+//     background: image-url("forest.jpg") no-repeat center center;
+//     background-size: cover;
+// }
 
 // Noticeのデザイン
 .notice-bar {
@@ -31,6 +31,7 @@
   padding:  10px;
 }
 
+// ヘッダーアイコンの大きさ
 .nav-item{
  font-size: 20px;
 }
@@ -38,7 +39,7 @@
 // フォームの文字を白くする
 .field {
   margin: 10px;
-  color: #fff;
+  color: #000;
   font-size: 20px;
 }
 
@@ -50,12 +51,12 @@
 
 
 // 背景に黒い半透明の枠
-.box{
-  background-color: #90B494;
-  border-radius: 20px;
-  margin: 10px 0 ;
-  padding: 10px 5px;
-}
+// .box{
+//   background-color: #90B494;
+//   border-radius: 20px;
+//   margin: 10px 0 ;
+//   padding: 10px 5px;
+// }
 
 // 黒枠白抜きの丸い枠
 .post-content{
@@ -131,14 +132,16 @@ button.comment{
     margin-left:20px;
 }
 
+// ボディーの色
 section{
   margin: 0px;
-  background: #BFC8AD;
+  background: #fff;
 }
 
+// フッターの表示
 footer {
   text-align:center;
-  background: #DBCFB0;
+  background: #6D9A9C;
   color: #fff;
   width: 100%;
   height: 50px;
