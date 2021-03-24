@@ -91,11 +91,15 @@ button.comment{
 .btn-add {
   color: #000;
   background-color: #fff;
+  border-radius: 100vh;
+  padding: 10px 15px;
+  margin: 5px;
 }
 
 .btn-add:hover {
   color: #fff;
   background: #6D9A9C;
+  
 }
 
 // ページネーションの記述
