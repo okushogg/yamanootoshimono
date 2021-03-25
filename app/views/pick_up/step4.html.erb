@@ -5,7 +5,7 @@
 
 <div class="container">
   <div class="row text-center">
-    <div class="col-md-6" style="font-size: 30px; color: #fff; margin: 0 auto;">
+    <div class="col-md-6" style="font-size: 30px; color: #000; margin: 20px auto;">
       <div class="box text-center">投稿フォーム </div> 
     </div>
       <div class="col-md-12">
@@ -30,22 +30,24 @@
         <%= f.date_field :found_day %> 
       </div>
       
-      <div class="col-md-10 post-content" >
+      <div class="col-md-10 post-content mt-5" >
       <div style="font-size: 20px;"> 写真</div> <br>
       <%= f.attachment_field :post_images_images, multiple: true %>
       </div>
       
-      <div class="col-md-10 post-content"  >
+      <div class="col-md-10 post-content mt-5"  >
       <div style="font-size: 20px;">詳細情報</div> <br>
       <%= f.text_area :detail,  class: "form-control mb-1", placeholder: "拾った物や場所の詳細について教えて下さい。", rows: "4" %>
       </div>
       
-      <div class="col-md-5 post-content" >
+      <div class="col-md-5 post-content my-5" >
       <div style="font-size: 20px;">届け先</div>
       <%= f.text_field :strage_place, class: "form-control mb-1", placeholder: "例：xxx小屋,〇〇の交番" %>  
       </div>
       <br>
-      <%= f.submit '投稿', class:"btn-post" %>
+      <div class="mb-5">
+        <%= f.submit '投稿', class:"btn-post" %>
+      </div>
       <% end %>
       </div>
       </div>

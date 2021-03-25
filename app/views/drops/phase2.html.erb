@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row text-center">
     <!--都道府県情報表示部分-->
-    <div class="col-md-6" style="margin: 0px auto;">
+    <div class="col-md-6" style="margin: 5px auto;">
       <div class="box">
-        <h1 style="color: #fff;"><%= @prefecture.prefecture_name %></h1>
+        <h1 style="color: #000; margin-top: 20px;"><%= @prefecture.prefecture_name %></h1>
         <%= link_to '戻る', :back,  class:"fas fa-undo btn btn-light"%><br>
         <%= image_tag "prefectures/prefecture#{@prefecture.id}.png", :size =>'300x300' %>
       </div>
@@ -13,12 +13,12 @@
     
   
     <!--山名表示部分-->
-    <div class="row text-center" style="margin: auto;">
-      <div class="col-md-8" style="margin: 0px auto;">
+    <div class="row text-center" style="margin: 10px auto;">
+      <div class="col-md-8" style="margin: 10px auto;">
         <div class="box">
           <% @places.each_with_index do |place, i| %>
-           <div style="display: inline-block;"><%= link_to place.name, phase3_path(place.id ), class:"btn btn-light" %></div>
-           <% if (i+1)%5 == 0 %> <br> <br> <% end %>
+           <div style="display: inline-block;"><%= link_to place.name, phase3_path(place.id), class:"btn btn-info btn-lg m-2" %></div>
+           <% if (i+1)%4 == 0 %> <br> <br> <% end %>
           <% end %>
         </div>
       </div>

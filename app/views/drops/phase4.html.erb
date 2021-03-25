@@ -3,8 +3,8 @@
 	
   <!--検索フォーム-->
   <div class="col-md-12">
-    <div class="box" style="color: #fff; font-size: 20px;">
-      <h3 style="color: #fff; margin: 10px auto;">絞り込み検索</h3>
+    <div class="box" style="color: #000; font-size: 20px;">
+      <h3 class="mx-auto my-5" style="color: #000;">絞り込み検索</h3>
       <%= search_form_for(@q, url:look_for_path) do |f| %>
         <!--詳細に対する部分検索-->
         <%= f.label :detail_cont, "キーワード検索" %>
@@ -56,16 +56,16 @@
     </div>
 <!--場所、アイテムジャンル絞り込み検索結果一覧部分-->
 
- <div class="col-md-4 pagenation"><%= paginate @posts %></div>
+ <div class="col-md-4 pagenation my-2"><%= paginate @posts %></div>
 <% else %>
-<h3 style="color: #fff; margin: 10px auto;">該当する投稿はありませんでした。</h3>
+<h3 style="color: #000; margin: 10px auto;">該当する投稿はありませんでした。</h3>
 <% end %>
 
 <!--捜索願入力フォーム-->
 <div class="col-md-12">
 <div class="box">
-<h3 style="color: #fff; margin: 10px auto;">捜索願</h3>
-<p style="color: #fff;">見つかりませんでしたか？捜索願を提出しましょう。<br>場所とアイテムジャンルが同じ投稿を検知してお知らせします。</p>
+<h3 style="color: #000; margin: 10px auto;">捜索願</h3>
+<p style="color: #000;">見つかりませんでしたか？捜索願を提出しましょう。<br>場所とアイテムジャンルが同じ投稿を検知してお知らせします。</p>
 <%= form_with model: @order, url: create_order_path, local:true do |f| %>
 <%= render 'layouts/error_messages', model: f.object %>
 <div class="col-md-5 post-content">
@@ -81,17 +81,17 @@
   <%= f.hidden_field :item_genre_id, value: @item_genre.id %>
 </div>
 
-<div class="col-md-5 post-content" >
+<div class="col-md-5 post-content mt-3" >
 <div style="font-size: 20px;">タイトル</div>
 <%= f.text_field :title, class: "form-control mb-1", placeholder: "例：黒のストック探しています。" %>  
 </div>
 
-<div class="col-md-10 post-content" >
+<div class="col-md-10 post-content mt-3" >
 <div style="font-size: 20px;">詳細</div>
 <%= f.text_field :content, class: "form-control mb-1", placeholder: "例：△△ルートを歩きました。5合目の付近でないことに気が付きました。" %>  
 </div>
 <br>
-<%= f.submit '提出', class:"btn-post" %>
+<%= f.submit '提出', class:"btn-post mt-3 mb-5" %>
 <% end %>
 </div>
 </div>

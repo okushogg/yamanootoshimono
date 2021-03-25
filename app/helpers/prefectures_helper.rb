@@ -9,6 +9,8 @@ module PrefecturesHelper
         step2_path(prefecture_id)
       when "drops" then
         phase2_path(prefecture_id)
+      when "add_place_form" then
+        step2_create_place_path(prefecture.id)
     end
   end
   
