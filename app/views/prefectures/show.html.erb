@@ -13,16 +13,16 @@
    
     
     <!--山名追加用フォーム-->
-    <div class="row text-center">
+    <div class="row text-center my-5">
       <div class="col-md-8" style="margin: 0px auto;">
         <div class="box">
-          <h5 style="color: #fff;">お探しの山がない場合は追加してください</h5>
-          <%= form_with model: @place, url: create_place_prefecture_path(@prefecture.id), local:true do |f| %>
+          <h5 class="mb-3"style="color: #000;">お探しの山がない場合は追加してください</h5>
+          <%= form_with model: @place, url:  create_place_prefecture_path(@prefecture.id), local:true do |f| %>
           <%= render 'layouts/error_messages', model: f.object %>
-            <span style="color: #fff;">山名</span> <%= f.text_field :name %>
-            <span style="color: #fff;">かな</span><%= f.text_field :name_kana %>
+           <p><span style="color: #000; margin-right: 5px;">山名</span> <%= f.text_field :name %></p> 
+            <p><span style="color: #000; margin-right: 5px;">かな</span><%= f.text_field :name_kana %></p>
             <%= f.hidden_field :prefecture_id, value: @prefecture.id %>
-            <%= f.submit '+', class:"btn-add" %>
+            <%= f.submit '場所を追加する', class:"btn-add" %>
           <% end %>
         </div>
       </div>
@@ -32,20 +32,20 @@
     
   
     <!--山名表示部分-->
-    <div class="row text-center" style="margin: auto;">
-      <div class="col-md-8" style="margin: 0px auto;">
+    <div class="row text-center" style="margin: 10px auto;">
+      <div class="col-md-8" style="margin: 10px auto;">
         <div class="box">
           <% @places.each_with_index do |place, i| %>
            <div style="display: inline-block;">
-                <%= link_to place.name, show_place_prefecture_path(place.id), class:"btn btn-light" %> 
+                <%= link_to place.name, show_place_prefecture_path(place.id), class:"btn btn-info btn-lg m-2" %> 
                 <% if user_signed_in? %>
                   <% if current_user.admin? %>
                     <%= link_to '', destroy_place_prefecture_path(place.id), method: :delete, class: 'fas fa-trash-alt',data: { confirm: '削除しますか？' } %>
                   <% end %>
                 <% end %>
             </div>
-            <!--５つごとに列を改行する-->
-           <% if (i+1)%5 == 0 %> <br> <br> <% end %>
+            <!--4つごとに列を改行する-->
+           <% if (i+1)%4 == 0 %> <br> <br> <% end %>
           <% end %>
         </div>
       </div>

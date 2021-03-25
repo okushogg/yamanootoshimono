@@ -13,6 +13,7 @@ class PickUpController < ApplicationController
 
   def create_place
     @prefecture = Prefecture.find_by(id: session[:prefecture_id])
+    @path_name = "add_place_form"
     @place = Place.new(place_params)
     if @place.save
       redirect_to step2_path(@place.prefecture.id), flash: { notice: '新しい山を登録しました。' }
